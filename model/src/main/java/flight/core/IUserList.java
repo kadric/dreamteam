@@ -7,7 +7,7 @@ import javax.ejb.Local;
 
 /**
  * Interface to product catalogue
- * @author hajo
+ * @author Dženan
  */
 @Local
 public interface IUserList extends IDAO<User, Long> {
