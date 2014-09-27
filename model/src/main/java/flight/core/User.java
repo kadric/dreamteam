@@ -12,12 +12,14 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 /**
  *
  * @author Dženan
  */
 @Entity
+@Table(name="USERS")
 public class User extends AbstractEntity {
     
     @Column(nullable = false)
