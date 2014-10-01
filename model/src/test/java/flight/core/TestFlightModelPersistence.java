@@ -83,6 +83,15 @@ public class TestFlightModelPersistence {
         assertTrue(us.size() == 0);
     }
     
+    @Test
+    public void testUserGetByEmail() throws Exception {
+        User u = new User("user@user.user", "password", Groups.USER);
+        flightModel.getUserList().create(u);
+        List<User> us = flightModel.getUserList().getByEmail("user@user.user");
+        assertTrue(us.size() > 0);
+        assertTrue(us.get(0).getEmail().equals(u.getEmail()));
+    }
+    
 
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces

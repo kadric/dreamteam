@@ -26,5 +26,12 @@ public class UserList extends AbstractDAO<User, Long>
     public EntityManager getEntityManager() {
         return em;
     }
+    
+    @Override
+    public List<User> getByEmail(String email) {
+        String jpql = "select u from User u where u.email=:email";
+        return em.createQuery(jpql, User.class).
+                setParameter("email", email).getResultList();
+    }
 
 }

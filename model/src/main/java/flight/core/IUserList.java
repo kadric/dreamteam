@@ -12,5 +12,5 @@ import javax.ejb.Local;
 @Local
 public interface IUserList extends IDAO<User, Long> {
 
-     
+     public List<User> getByEmail(String name);
 }
