@@ -6,5 +6,6 @@ flight\core\UserList.class
 flight\core\IUserList.class
 flight\core\FlightModel.class
 flight\core\User.class
+flight\data\DefaultData.class
 flight\util\AbstractEntity.class
 flight\core\Groups.class

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 /**
- * Interface to product catalogue
+ * Interface to user list
  * @author Dženan
  */
 @Local

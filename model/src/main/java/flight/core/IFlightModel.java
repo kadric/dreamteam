@@ -3,7 +3,7 @@ package flight.core;
 import javax.ejb.Local;
 
 /**
- * Public interface for the shop
+ * Public interface for the flight model
  * @author Dženan
  */
 @Local

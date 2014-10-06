@@ -8,11 +8,13 @@ package flight.core;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author Dženan
  */
+@ApplicationScoped
 public class FlightModel implements IFlightModel {
     
     @EJB
