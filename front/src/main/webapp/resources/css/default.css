@@ -1,0 +1,18 @@
+@import url(libs/bootstrap/css/bootstrap.css);
+
+body{
+    background-color: #F6F7FB;
+    
+    margin: 0;
+}
+
+
+
+
+
+.ui-menuitem-link *{
+    margin-left:150px;
+    color:black;
+    alignment-baseline: central;
+}
+
