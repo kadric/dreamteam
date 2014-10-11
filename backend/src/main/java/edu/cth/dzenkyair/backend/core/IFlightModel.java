@@ -12,4 +12,6 @@ public interface IFlightModel {
     public IUserList getUserList();
     
     public IAirportList getAirportList();
+    
+    public ILineList getLineList();
 }

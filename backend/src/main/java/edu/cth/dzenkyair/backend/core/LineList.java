@@ -32,14 +32,14 @@ public class LineList extends AbstractDAO<Line, Long> implements ILineList
     @Override
     public List<Line> getByFromAirport(Airport fromAirport) {
           
-        String jpql = "select l from Line a where l.fromAirport=:fromAirport";
+        String jpql = "select l from Line l where l.fromAirport=:fromAirport";
         return em.createQuery(jpql, Line.class).
                 setParameter("fromAirport", fromAirport).getResultList(); 
     }
 
     @Override
     public List<Line> getByToAirport(Airport toAirport) {
-        String jpql = "select l from Line l where l.totoAirport=:totoAirport";
+        String jpql = "select l from Line l where l.toAirport=:toAirport";
         return em.createQuery(jpql, Line.class).
                 setParameter("toAirport", toAirport).getResultList();
     }

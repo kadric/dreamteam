@@ -41,7 +41,7 @@ public class Line extends AbstractEntity {
     }
 
     
-    private Airport getToAirport() {
+    public Airport getToAirport() {
         return toAirport;
     }
 

@@ -115,7 +115,54 @@ public class TestFlightModelPersistence {
         assertTrue(as.isEmpty());
     }
     
-
+    @Test
+    public void testLine() throws Exception {
+    Airport a = new Airport("Goteborg");
+    Airport b = new Airport("Sarajevo");
+    flightModel.getAirportList().create(a);  // Neznam ako ovo treba
+	flightModel.getAirportList().create(b);
+        
+        a = flightModel.getAirportList().getByName(a.getName()).get(0);
+        b = flightModel.getAirportList().getByName(b.getName()).get(0);
+        Line line = new Line(a , b);
+        
+        // CREATE TEST
+        // test getByFromAirport
+        flightModel.getLineList().create(line);
+        List<Line> fromList = flightModel.getLineList().getByFromAirport(a);
+        assertTrue(fromList.size() > 0);
+        assertTrue(fromList.get(0).getFromAirport().getName().equals(a.getName()));
+        // test getByToAIrport
+        List<Line> toList = flightModel.getLineList().getByToAirport(b);
+        assertTrue(toList.size() > 0);
+        assertTrue(toList.get(0).getToAirport().getName().equals(b.getName()));
+        
+         // UPDATE TEST
+        Airport c = new Airport("London");
+        Airport d = new Airport("Tokyo");
+        flightModel.getAirportList().create(c);
+        flightModel.getAirportList().create(d);
+        
+        c=flightModel.getAirportList().getByName(c.getName()).get(0);
+        d=flightModel.getAirportList().getByName(d.getName()).get(0);
+        Line line2 = new Line(c,d);
+        
+        flightModel.getLineList().update(line2);
+        fromList = flightModel.getLineList().getByFromAirport(c);
+        assertTrue(fromList.size() > 0 );
+        assertTrue(fromList.get(0).getFromAirport().getName().equals(c.getName()));
+        
+        toList = flightModel.getLineList().getByToAirport(d);
+        assertTrue(toList.size() > 0);
+        assertTrue(toList.get(0).getToAirport().getName().equals(d.getName()));
+        
+        // DELETE TEST
+        
+        flightModel.getLineList().delete(line.getId());
+        fromList = flightModel.getLineList().getByFromAirport(a);
+        assertTrue(fromList.isEmpty());
+        
+    }
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
     @PersistenceContext(unitName = "flight_model_test_pu")
@@ -129,6 +176,7 @@ public class TestFlightModelPersistence {
         em.joinTransaction();
         em.createQuery("delete from User").executeUpdate();
         em.createQuery("delete from Airport").executeUpdate();
+        em.createQuery("delete from Line").executeUpdate();
         utx.commit();
     }
 
