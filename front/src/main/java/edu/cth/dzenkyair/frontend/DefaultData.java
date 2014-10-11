@@ -1,4 +1,4 @@
-package flight;
+package edu.cth.dzenkyair.frontend;
 
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Groups;
@@ -32,13 +32,13 @@ public class DefaultData {
     @PostConstruct
     public void post() {
         LOG.log(Level.INFO, "*** Default data alive");
-        createtTestData(); // COMMENT OUT First run (no tables yet)
+        //createtTestData(); // COMMENT OUT First run (no tables yet)
     }
 
     @PreDestroy
     public void destroy() {
         LOG.log(Level.INFO, "*** Default data will be destroyed");
-        clearTestData();
+        //clearTestData();
     }
 
     private void createtTestData() {
