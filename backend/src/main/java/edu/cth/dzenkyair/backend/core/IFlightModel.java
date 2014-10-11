@@ -10,4 +10,6 @@ import javax.ejb.Local;
 public interface IFlightModel {
 
     public IUserList getUserList();
+    
+    public IAirportList getAirportList();
 }

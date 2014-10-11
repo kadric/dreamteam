@@ -19,6 +19,8 @@ public class FlightModel implements IFlightModel {
     
     @EJB
     private IUserList userList;
+    @EJB
+    private IAirportList airportList;
     
     public FlightModel() {
         Logger.getAnonymousLogger().log(Level.INFO, "Flight model alive");
@@ -27,5 +29,10 @@ public class FlightModel implements IFlightModel {
     @Override
     public IUserList getUserList() {
         return userList;
+    }
+    
+    @Override
+    public IAirportList getAirportList() {
+        return airportList;
     }
 }
