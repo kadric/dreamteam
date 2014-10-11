@@ -4,6 +4,7 @@
     <jta-data-source>jdbc/test</jta-data-source>
     <class>edu.cth.dzenkyair.backend.core.User</class>
     <class>edu.cth.dzenkyair.backend.core.Airport</class>
+    <class>edu.cth.dzenkyair.backend.core.Line</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
