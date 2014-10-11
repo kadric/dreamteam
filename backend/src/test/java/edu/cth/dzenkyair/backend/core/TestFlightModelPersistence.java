@@ -92,6 +92,29 @@ public class TestFlightModelPersistence {
         assertTrue(us.get(0).getEmail().equals(u.getEmail()));
     }
     
+    @Test
+    public void testAirport() throws Exception {
+        Airport a = new Airport("Sarajevo");
+        
+        // CREATE TEST
+        flightModel.getAirportList().create(a);
+        List<Airport> as = flightModel.getAirportList().getByName(a.getName());
+        assertTrue(as.size() > 0);
+        assertTrue(as.get(0).getName().equals(a.getName()));
+        
+        // UPDATE TEST
+        Airport anew = new Airport(a.getId(), "Tuzla");
+        flightModel.getAirportList().update(anew);
+        as = flightModel.getAirportList().getByName(anew.getName());
+        assertTrue(as.size() > 0);
+        assertTrue(as.get(0).getName().equals(anew.getName()));
+        
+        // DELETE TEST
+        flightModel.getAirportList().delete(a.getId());
+        as = flightModel.getAirportList().getByName(anew.getName());
+        assertTrue(as.isEmpty());
+    }
+    
 
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
@@ -105,6 +128,7 @@ public class TestFlightModelPersistence {
         utx.begin();  
         em.joinTransaction();
         em.createQuery("delete from User").executeUpdate();
+        em.createQuery("delete from Airport").executeUpdate();
         utx.commit();
     }
 
