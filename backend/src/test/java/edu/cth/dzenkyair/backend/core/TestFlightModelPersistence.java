@@ -119,8 +119,8 @@ public class TestFlightModelPersistence {
     public void testLine() throws Exception {
     Airport a = new Airport("Goteborg");
     Airport b = new Airport("Sarajevo");
-    flightModel.getAirportList().create(a);  // Neznam ako ovo treba
-	flightModel.getAirportList().create(b);
+    flightModel.getAirportList().create(a);
+    flightModel.getAirportList().create(b);
         
         a = flightModel.getAirportList().getByName(a.getName()).get(0);
         b = flightModel.getAirportList().getByName(b.getName()).get(0);
