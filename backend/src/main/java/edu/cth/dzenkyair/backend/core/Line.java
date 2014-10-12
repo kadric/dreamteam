@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * @author matej
  */
 @Entity
-@Table(name="Lines")
+@Table(name="LINES")
 public class Line extends AbstractEntity {
 
     @ManyToOne(cascade = {CascadeType.MERGE})

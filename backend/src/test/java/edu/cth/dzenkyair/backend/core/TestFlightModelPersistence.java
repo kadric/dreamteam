@@ -207,6 +207,89 @@ public class TestFlightModelPersistence {
         assertTrue(fs.isEmpty());
     }
     
+     @Test
+    public void testOrder() throws Exception {
+    
+        Airport a1 = new Airport("Göteborg");
+        Airport a2 = new Airport("Sarajevo"); 
+        flightModel.getAirportList().create(a1);
+        flightModel.getAirportList().create(a2);
+        
+        a1 = flightModel.getAirportList().getByName(a1.getName()).get(0);
+        a2 = flightModel.getAirportList().getByName(a2.getName()).get(0);
+        Line line = new Line(a1 , a2);
+        flightModel.getLineList().create(line);
+        
+        Calendar dep = Calendar.getInstance();
+        dep.set(2015, 1, 1, 14, 0);
+        Calendar arr = Calendar.getInstance();
+        arr.set(2015, 1, 1, 15, 0);
+        
+        int maxP = 12;
+        
+        Flight f = new Flight(line,dep,arr,maxP);
+        flightModel.getFlightList().create(f);
+        User u = new User("Bakir", "Bake", Groups.USER);
+        flightModel.getUserList().create(u);
+        
+        List<User> ul = flightModel.getUserList().getByEmail(u.getEmail());
+        assertTrue(ul.size() >0);
+                
+        Order order = new Order(f,u);
+        
+        /*Create test*/
+        flightModel.getOrderList().create(order);
+        List<Order> ol1 = flightModel.getOrderList().getByFlight(f);
+        assertTrue(ol1.size()>0);
+        assertTrue(ol1.get(0).getOrderFlight().getLine().getId() == f.getLine().getId());
+        
+        List<Order> ol2 = flightModel.getOrderList().getByUser(u);
+         assertTrue(ol2.size() > 0);
+         assertTrue(ol2.get(0).getOrderUser().getEmail().equals(u.getEmail()));
+        
+         /* Update test */
+         Airport a3 = new Airport("London");
+         Airport a4 = new Airport("Tokyo"); 
+         flightModel.getAirportList().create(a3);
+         flightModel.getAirportList().create(a4);
+        
+        a3 = flightModel.getAirportList().getByName(a3.getName()).get(0);
+        a4 = flightModel.getAirportList().getByName(a4.getName()).get(0);
+        Line line2 = new Line(a3 , a4);
+        flightModel.getLineList().create(line2);
+        
+        Calendar dep2 = Calendar.getInstance();
+        dep.set(2015, 1, 1, 20, 0);
+        Calendar arr2 = Calendar.getInstance();
+        arr.set(2015, 1, 1, 22, 0);
+        
+               
+        Flight f2 = new Flight(line2,dep2,arr2,maxP);
+        flightModel.getFlightList().create(f2);
+        User u2 = new User("Nick", "diaz", Groups.USER);
+        flightModel.getUserList().create(u2);
+        
+        List<User> ul2 = flightModel.getUserList().getByEmail(u2.getEmail());
+        assertTrue(ul2.size() >0);
+                
+        Order order2 = new Order(f2,u2);
+         
+        flightModel.getOrderList().update(order2);
+        ol1 = flightModel.getOrderList().getByFlight(f2);
+        assertTrue(ol1.size()>0);
+        assertTrue(ol1.get(0).getOrderFlight().getLine().getId() == f2.getLine().getId());
+        
+        ol2 = flightModel.getOrderList().getByUser(u2);
+        assertTrue(ol2.size()>0);
+        assertTrue(ol2.get(0).getOrderUser().getEmail().equals(u2.getEmail()));
+        
+        /* Delete test  */
+        flightModel.getOrderList().delete(order.getId());
+        ol1 = flightModel.getOrderList().getByFlight(f);
+        assertTrue(ol1.isEmpty());
+        
+       
+    }
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
     @PersistenceContext(unitName = "flight_model_test_pu")
@@ -222,6 +305,7 @@ public class TestFlightModelPersistence {
         em.createQuery("delete from Flight").executeUpdate();
         em.createQuery("delete from Line").executeUpdate();
         em.createQuery("delete from Airport").executeUpdate();
+        em.createQuery("delete from Order").executeUpdate();
         utx.commit();
     }
 

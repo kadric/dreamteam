@@ -25,6 +25,8 @@ public class FlightModel implements IFlightModel {
     private ILineList lineList;
     @EJB
     private IFlightList flightList;
+    @EJB
+    private IOrderList orderList;
     
     public FlightModel() {
         Logger.getAnonymousLogger().log(Level.INFO, "Flight model alive");
@@ -50,5 +52,8 @@ public class FlightModel implements IFlightModel {
         return flightList;
     }
     
-    
+    @Override
+    public IOrderList getOrderList(){
+        return orderList;
+    }
 }
