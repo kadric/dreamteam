@@ -1,4 +1,5 @@
 edu\cth\dzenkyair\backend\util\IDAO.class
+edu\cth\dzenkyair\backend\core\Flight.class
 edu\cth\dzenkyair\backend\util\AbstractDAO.class
 edu\cth\dzenkyair\backend\core\UserList.class
 edu\cth\dzenkyair\backend\core\IAirportList.class
@@ -7,6 +8,7 @@ edu\cth\dzenkyair\backend\core\Line.class
 edu\cth\dzenkyair\backend\core\User_.class
 edu\cth\dzenkyair\backend\core\User.class
 edu\cth\dzenkyair\backend\core\ILineList.class
+edu\cth\dzenkyair\backend\core\Flight_.class
 edu\cth\dzenkyair\backend\core\IFlightModel.class
 edu\cth\dzenkyair\backend\core\Line_.class
 edu\cth\dzenkyair\backend\util\AbstractEntity.class
