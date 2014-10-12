@@ -23,6 +23,8 @@ public class FlightModel implements IFlightModel {
     private IAirportList airportList;
     @EJB
     private ILineList lineList;
+    @EJB
+    private IFlightList flightList;
     
     public FlightModel() {
         Logger.getAnonymousLogger().log(Level.INFO, "Flight model alive");
@@ -43,6 +45,10 @@ public class FlightModel implements IFlightModel {
         return lineList;
     }
     
+    @Override
+    public IFlightList getFlightList() {
+        return flightList;
+    }
     
     
 }
