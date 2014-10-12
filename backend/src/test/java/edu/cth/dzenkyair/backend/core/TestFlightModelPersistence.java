@@ -301,11 +301,12 @@ public class TestFlightModelPersistence {
     private void clearAll() throws Exception {  
         utx.begin();  
         em.joinTransaction();
+        em.createQuery("delete from Order").executeUpdate();
         em.createQuery("delete from User").executeUpdate();
         em.createQuery("delete from Flight").executeUpdate();
         em.createQuery("delete from Line").executeUpdate();
         em.createQuery("delete from Airport").executeUpdate();
-        em.createQuery("delete from Order").executeUpdate();
+        
         utx.commit();
     }
 
