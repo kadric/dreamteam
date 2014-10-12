@@ -1,5 +1,6 @@
 package edu.cth.dzenkyair.backend.core;
 
+import java.util.Calendar;
 import java.util.List;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
@@ -163,6 +164,49 @@ public class TestFlightModelPersistence {
         assertTrue(fromList.isEmpty());
         
     }
+    
+    @Test
+    public void testFlight() throws Exception {
+        flightModel.getAirportList().create(new Airport("Sarajevo"));
+        flightModel.getAirportList().create(new Airport("Tuzla"));
+        
+        List<Airport> la = flightModel.getAirportList().findAll(); 
+        assertTrue(la.size() > 1);
+        Line satu = new Line(la.get(0), la.get(1));
+        
+        flightModel.getLineList().create(satu);
+        satu = flightModel.getLineList().findAll().get(0);
+        
+        Calendar departure = Calendar.getInstance();
+        departure.set(2015, 1, 1, 14, 0);
+        Calendar arrival = Calendar.getInstance();
+        arrival.set(2015, 1, 1, 16, 45);
+        Flight flight = new Flight(satu, departure, arrival, 10);
+        
+        // CREATE TEST
+        flightModel.getFlightList().create(flight);
+        List<Flight> fs = flightModel.getFlightList().findAll();
+        assertTrue(fs.size() > 0);
+        int i = fs.get(0).getDeparture().compareTo(departure);
+        assertTrue(0 == i);
+        
+        // GET BY LINE TEST
+        fs = flightModel.getFlightList().getByLine(satu);
+        assertTrue(fs.size() > 0);
+        
+        // UPDATE TEST
+        Flight oldFlight = flightModel.getFlightList().findAll().get(0);
+        Flight newFlight = new Flight(oldFlight.getId(), satu, departure, arrival, 50);
+        flightModel.getFlightList().update(newFlight);
+        int newPass = flightModel.getFlightList().findAll().get(0).getMaxPass();
+        assertTrue(newPass == newFlight.getMaxPass());
+        
+        //DELETE TEST
+        flightModel.getFlightList().delete(oldFlight.getId());
+        fs = flightModel.getFlightList().findAll();
+        assertTrue(fs.isEmpty());
+    }
+    
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
     @PersistenceContext(unitName = "flight_model_test_pu")
@@ -175,8 +219,9 @@ public class TestFlightModelPersistence {
         utx.begin();  
         em.joinTransaction();
         em.createQuery("delete from User").executeUpdate();
-        em.createQuery("delete from Airport").executeUpdate();
+        em.createQuery("delete from Flight").executeUpdate();
         em.createQuery("delete from Line").executeUpdate();
+        em.createQuery("delete from Airport").executeUpdate();
         utx.commit();
     }
 
