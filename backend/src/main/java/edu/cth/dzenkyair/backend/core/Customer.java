@@ -30,7 +30,7 @@ public class Customer extends AbstractEntity{
     @Column(nullable = false)
     private String city;
     @Column(nullable = false)
-    private Long phone;
+    private long phone;
     
     
     public Customer(){
@@ -38,7 +38,7 @@ public class Customer extends AbstractEntity{
     }
     
     public Customer(User user, String firstName, String lastName,
-                        String adress, String city, Long phone){
+                        String adress, String city, long phone){
         this.user = user;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,7 +49,7 @@ public class Customer extends AbstractEntity{
     }
     
     public Customer(Long id, User user, String firstName, String lastName,
-                        String adress, String city, Long phone){
+                        String adress, String city, long phone){
         super(id);
         this.user = user;
         this.firstName = firstName;
@@ -104,7 +104,7 @@ public class Customer extends AbstractEntity{
         return phone;
     }
 
-    public void setPhone(Long phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
     

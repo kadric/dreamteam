@@ -347,6 +347,21 @@ public class TestFlightModelPersistence {
         assertTrue(lp.isEmpty());
     }
     
+     @Test
+    public void testCustomer() throws Exception {
+        
+        User u = new User("Bakir", "Bake", Groups.USER);
+        flightModel.getUserList().create(u);
+        
+        Customer c = new Customer(u, "Bakir", "Bake", "Marsala Tita 1","Sarajevo", 033223344);
+        flightModel.getCustomerList().create(c);
+        
+        // CREATE TEST
+        List<Customer> cl = flightModel.getCustomerList().findAll();
+        assertTrue(cl.size() > 0);
+        assertTrue(cl.get(0).getFirstName().equals(c.getFirstName()));
+    }
+    
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
     @PersistenceContext(unitName = "flight_model_test_pu")
@@ -360,6 +375,7 @@ public class TestFlightModelPersistence {
         em.joinTransaction();
         em.createQuery("delete from Passenger").executeUpdate();
         em.createQuery("delete from Order").executeUpdate();
+        em.createQuery("delete from Customer").executeUpdate();
         em.createQuery("delete from User").executeUpdate();
         em.createQuery("delete from Flight").executeUpdate();
         em.createQuery("delete from Line").executeUpdate();

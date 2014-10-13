@@ -1,3 +1,5 @@
+package edu.cth.dzenkyair.backend.core;
+
 
 import edu.cth.dzenkyair.backend.core.Customer;
 import edu.cth.dzenkyair.backend.core.ICustomerList;
