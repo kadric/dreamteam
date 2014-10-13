@@ -350,16 +350,36 @@ public class TestFlightModelPersistence {
      @Test
     public void testCustomer() throws Exception {
         
-        User u = new User("Bakir", "Bake", Groups.USER);
+        User u = new User("bake@sda.com", "bakebake", Groups.USER);
         flightModel.getUserList().create(u);
         
         Customer c = new Customer(u, "Bakir", "Bake", "Marsala Tita 1","Sarajevo", 033223344);
         flightModel.getCustomerList().create(c);
         
-        // CREATE TEST
-        List<Customer> cl = flightModel.getCustomerList().findAll();
+        /* Create test*/
+        List<Customer> cl = flightModel.getCustomerList().getByUser(u);
         assertTrue(cl.size() > 0);
         assertTrue(cl.get(0).getFirstName().equals(c.getFirstName()));
+        
+        /*Update test*/
+         User u2 = new User("nick@nick.com", "diazdiaz", Groups.USER);
+        flightModel.getUserList().create(u2);
+        u2 = flightModel.getUserList().getByEmail(u2.getEmail()).get(0);
+       
+           
+        Customer c2 = new Customer(u2, "Nick", "Diaz", "Stockton 209","California", 03321324);
+        flightModel.getCustomerList().update(c2);
+        c2 = flightModel.getCustomerList().getByUser(c2.getUser()).get(0);
+        
+        cl = flightModel.getCustomerList().getByUser(u2);
+        assertTrue(cl.size() > 0);
+        assertTrue(cl.get(0).getFirstName().equals(c2.getFirstName()));
+        
+        /*Delete test*/
+        flightModel.getCustomerList().delete(c.getId());
+        cl = flightModel.getCustomerList().getByUser(c.getUser());
+         assertTrue(cl.isEmpty());
+        
     }
     
     // Need a standalone em to remove testdata between tests
