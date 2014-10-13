@@ -290,6 +290,63 @@ public class TestFlightModelPersistence {
         
        
     }
+    
+    @Test
+    public void testPassenger() throws Exception {
+        
+        // INIT
+        flightModel.getAirportList().create(new Airport("Sarajevo"));
+        flightModel.getAirportList().create(new Airport("Tuzla"));
+        
+        List<Airport> la = flightModel.getAirportList().findAll(); 
+        assertTrue(la.size() > 0);
+        flightModel.getLineList().create(new Line(la.get(0), la.get(1)));
+        
+        List<Line> ll = flightModel.getLineList().findAll();
+        assertTrue(ll.size() > 0);
+        Calendar departure = Calendar.getInstance();
+        departure.set(2015, 1, 1, 14, 0);
+        Calendar arrival = Calendar.getInstance();
+        arrival.set(2015, 1, 1, 16, 45);
+        Flight flight = new Flight(ll.get(0), departure, arrival, 10);
+        flightModel.getFlightList().create(flight);
+        
+        flightModel.getUserList().create(new User("user", "password", Groups.USER));
+        List<User> lu = flightModel.getUserList().findAll();
+        assertTrue(lu.size() > 0);
+        Order order = new Order(flight, lu.get(0));
+        flightModel.getOrderList().create(order);
+        
+        // CREATE TEST
+        Passenger p = new Passenger(flight, order, "Dzeno", "Bazdar", "Handbag");
+        flightModel.getPassengerList().create(p);
+        List<Passenger> lp = flightModel.getPassengerList().findAll();
+        assertTrue(lp.size() > 0);
+        Passenger po = lp.get(0);
+        assertTrue(po.getFirstName().equals(p.getFirstName()));
+        
+        // UPDATE TEST
+        Passenger pnew = new Passenger(po.getId(), po.getFlight(), po.getOrder(), 
+                "Dzeno", "Bazdar", "XXL Bag");
+        flightModel.getPassengerList().update(pnew);
+        lp = flightModel.getPassengerList().findAll();
+        assertTrue(lp.size() > 0);
+        assertTrue(lp.get(0).getBaggage().equals(pnew.getBaggage()));
+        
+        // GET BY FLIGHT TEST
+        lp = flightModel.getPassengerList().getByFlight(flight);
+        assertTrue(lp.size() > 0);
+        
+        // GET BY ORDER TEST
+        lp = flightModel.getPassengerList().getByOrder(order);
+        assertTrue(lp.size() > 0);
+        
+        // DELETE TEST
+        flightModel.getPassengerList().delete(po.getId());
+        lp = flightModel.getPassengerList().findAll();
+        assertTrue(lp.isEmpty());
+    }
+    
     // Need a standalone em to remove testdata between tests
     // No em accessible from interfaces
     @PersistenceContext(unitName = "flight_model_test_pu")
@@ -301,6 +358,7 @@ public class TestFlightModelPersistence {
     private void clearAll() throws Exception {  
         utx.begin();  
         em.joinTransaction();
+        em.createQuery("delete from Passenger").executeUpdate();
         em.createQuery("delete from Order").executeUpdate();
         em.createQuery("delete from User").executeUpdate();
         em.createQuery("delete from Flight").executeUpdate();
