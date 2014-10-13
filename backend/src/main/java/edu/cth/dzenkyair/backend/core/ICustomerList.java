@@ -17,5 +17,5 @@ import javax.ejb.Local;
 @Local
 public interface ICustomerList extends IDAO<Customer, Long> {
         
-        public List<Customer> getByUser(Long id);
+        public List<Customer> getByUser(User user);
 }

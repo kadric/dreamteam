@@ -20,4 +20,6 @@ public interface IFlightModel {
     public IOrderList getOrderList();
     
     public IPassengerList getPassengerList();
+    
+    public ICustomerList getCustomerList();
 }
