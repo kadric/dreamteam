@@ -8,6 +8,7 @@
     <class>edu.cth.dzenkyair.backend.core.Flight</class>
     <class>edu.cth.dzenkyair.backend.core.Order</class>
     <class>edu.cth.dzenkyair.backend.core.Passenger</class>
+    <class>edu.cth.dzenkyair.backend.core.Customer</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
