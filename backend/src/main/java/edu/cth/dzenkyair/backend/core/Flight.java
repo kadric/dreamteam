@@ -20,9 +20,9 @@ public class Flight extends AbstractEntity {
 
     @ManyToOne
     private Line line;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar departure;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar arrival;
     @Column(nullable = false)
     private int maxPass;
