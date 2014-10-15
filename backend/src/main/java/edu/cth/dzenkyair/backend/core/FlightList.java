@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  * All flights
@@ -34,5 +35,14 @@ public class FlightList extends AbstractDAO<Flight, Long>
         String jpql = "select f from Flight f where f.line=:line";
         return em.createQuery(jpql, Flight.class).
                 setParameter("line", line).getResultList();
+    }
+    
+    @Override
+    public List<Flight> getByLineAndDeparture(Line line, Calendar departure){
+        String jpql = "select f from Flight f where f.line=:line and f.departure>=:departure";
+        Query query = em.createQuery(jpql, Flight.class);
+        query.setParameter("line", line);
+        query.setParameter("departure", departure);
+        return query.getResultList();
     }
 }
