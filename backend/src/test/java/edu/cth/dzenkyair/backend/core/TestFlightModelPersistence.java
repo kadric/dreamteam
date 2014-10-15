@@ -194,6 +194,14 @@ public class TestFlightModelPersistence {
         fs = flightModel.getFlightList().getByLine(satu);
         assertTrue(fs.size() > 0);
         
+        // GET BY LINE AND DEPARTURE
+        departure.set(2014, 12, 12);
+        fs = flightModel.getFlightList().getByLineAndDeparture(satu, departure);
+        assertTrue(fs.size() > 0);
+        departure.set(2016, 01, 01);
+        fs = flightModel.getFlightList().getByLineAndDeparture(satu, departure);
+        assertTrue(fs.isEmpty());
+        
         // UPDATE TEST
         Flight oldFlight = flightModel.getFlightList().findAll().get(0);
         Flight newFlight = new Flight(oldFlight.getId(), satu, departure, arrival, 50);
