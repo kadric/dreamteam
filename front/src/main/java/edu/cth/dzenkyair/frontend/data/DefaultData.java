@@ -1,12 +1,16 @@
-package edu.cth.dzenkyair.frontend;
+package edu.cth.dzenkyair.frontend.data;
 
+import edu.cth.dzenkyair.backend.core.Airport;
+import edu.cth.dzenkyair.backend.core.Flight;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Groups;
+import edu.cth.dzenkyair.backend.core.Line;
 import edu.cth.dzenkyair.backend.core.User;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -47,6 +51,21 @@ public class DefaultData {
         flightModel.getUserList().create(u);
         u = new User("admin@admin.admin", "admin", Groups.ADMIN);
         flightModel.getUserList().create(u);
+        
+        Airport sarajevo = new Airport("Sarajevo");
+        Airport goteborg = new Airport("Göteborg");
+        flightModel.getAirportList().create(sarajevo);
+        flightModel.getAirportList().create(goteborg);
+        
+        Line sagbg = new Line(sarajevo, goteborg);
+        flightModel.getLineList().create(sagbg);
+        
+        Calendar departure = Calendar.getInstance();
+        departure.set(2015, 1, 1, 14, 0);
+        Calendar arrival = Calendar.getInstance();
+        arrival.set(2015, 1, 1, 16, 45);
+        Flight flsagbg = new Flight(sagbg, departure, arrival, 10);
+        flightModel.getFlightList().create(flsagbg);
     }
 
     private void clearTestData() {
