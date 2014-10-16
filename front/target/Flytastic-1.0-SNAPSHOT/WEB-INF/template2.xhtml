@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Dzenky Air</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+        <!-- WHY DOESNT GLYPHICONS WORK WITH BOOTSTRAP FROM OUTPUTSTYLESHEET?
+        <h:outputStylesheet library="bootstrap/css" name="bootstrap-theme.css" />
+        <h:outputStylesheet library="bootstrap/css" name="bootstrap.min.css" />
+        -->
+        <h:outputStylesheet library="css" name="style.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/test.ico"/>
+    </h:head>
+
+    <h:body>
+ 
+	<div id="tpage">
+           
+	    <div id="hello">
+                <div id="bicon">
+                    <h:graphicImage value="/resources/img/logo.png" id="loggg"/>
+		</div>
+            </div>
+			
+            <nav class="navbar navbar-default navbar-static-top" id="bar">
+		<div class="container-fluid" id="barbar">
+                    <div>
+			<ul class="nav navbar-nav">
+                            
+			</ul>
+                    </div>
+                    <button type="button" class="btn btn-info navbar-btn navbar-right" >Sign in</button>
+		</div>
+            </nav>
+ 
+	    <div id="tcontent">
+	  	<ui:insert name="tcontent" >
+	 	  <ui:include src="content.xhtml" />
+	   	</ui:insert>
+	    </div>
+ 
+	    <footer id="fots">
+                <div id="infof">
+                    <div id="infoc">
+			<ul class="ulfot" id="ulfk">
+                            <li class="lifir"><h4><b>Destinatons</b></h4></li>
+                            
+			</ul>
+			<ul class="ulfot">
+                            <li class="lifir"><h4><b>Flight info</b></h4></li>
+                            
+			</ul>
+			<ul class="ulfot">
+                            <li class="lifir"><h4><b>Dzenky Air</b></h4></li>
+                          
+                        </ul>
+			<ul class="ulfots">
+                            <li class="lifir"><h4><b>Social media</b></h4></li>
+                            <li><a class="socl" href="https://www.facebook.com/dzenkyair" target="_blank"><h:graphicImage value="/resources/img/fb.png" /> Facebook</a></li>
+                            <li><a class="socl" href="https://twitter.com/DzenkyAir" target="_blank"><h:graphicImage value="/resources/img/twtr.png" /> Twitter</a></li>
+                            <li><a class="socl" href="https://plus.google.com/113993906909864522052/posts" target="_blank"><h:graphicImage value="/resources/img/gplus.png" /> Google+</a></li>
+                            <li><a class="socl" href="http://instagram.com/dzenkyair" target="_blank"><h:graphicImage value="/resources/img/insta.png" /> Instagram</a></li>
+			</ul>
+                    </div>
+		</div>
+		<div id="fotsd">
+                    <div id="leftis">	
+			<p><b> &copy; Dzenky Air 2014 </b></p>
+                    </div>
+                    <div id="rightis">
+			<a href="#" id="bks">Back to top <span class="glyphicon glyphicon-arrow-up"></span> </a>
+                    </div>
+                </div>	
+            </footer>
+ 
+        </div>
+ 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    </h:body>
+</html>
+        

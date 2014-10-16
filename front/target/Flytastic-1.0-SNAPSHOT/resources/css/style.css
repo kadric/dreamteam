@@ -1,0 +1,237 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014-okt-08, 15:21:19
+    Author     : Asus
+*/
+
+/* DEFAULT */
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+    overflow-y: scroll; 
+}
+body{
+	background-color: white;
+	font-family: 'Raleway', sans-serif;
+}
+.btn-info{
+    color: white;
+    background-color: #d60d8c;
+    border-color: #d60d8c;
+}
+
+#welcome{
+	width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding-top: 10px;
+}
+#heyeyey{
+	padding-bottom: 20px;
+}
+#flif{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+}
+#aboutj{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	border-radius: 5px;
+}
+#inf{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	text-align: center;
+}
+#barbar{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#myCarousel{
+	width: 851px;
+	float: none;
+    margin:  auto;
+}
+#infof{
+	width: 100%;
+	height: 240px;
+	background-color: #d60d8c;
+	color: white;
+}
+.ulfot{
+	margin: 40px 0px 30px 0px;
+	width: 20%;
+	list-style-type: none;
+	float: left;
+	padding-right: 40px;
+	padding-right: 80px;
+}
+.ulfots{
+	margin: 40px 0px 30px 0px;
+	width: 20%;
+	list-style-type: none;
+	float: right;
+	padding-right: 80px;
+}
+.socl{
+	color: white;
+}
+.socl:hover{
+	color: white;
+        background: none;   
+}
+#clr{
+	clear: both;
+}
+#ulfk{
+	margin-left: 30px;
+}
+#infoc{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#fots{
+	background-color: #22356b;
+	width: 100%;
+}
+#fotsd{
+	height: 50px;
+	padding-top:15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#leftis{
+	width: 300px;
+	float: left;
+	color: white;
+}
+#rightis{
+	width: 300px;
+	float: right;
+	text-align: right;
+	color: black;
+}
+#bks{
+	color: white;
+}
+#news{
+	width: 460px;
+	float: left;
+	border-radius: 5px;
+}
+#jobs{
+	width: 460px;
+	float: right;
+	border-radius: 5px;
+}
+#newsc{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.destinfo{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 18px;
+}
+.londlist{
+	padding-left: 20px;
+}
+#omoss{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+}
+#oms{
+	text-align: center;
+}
+#titler{
+	color: white;
+}
+#bar{
+	background-color: #22356b;
+        background-image: linear-gradient(to bottom,#1e2f60 0,#22356b 100%);
+}
+.navbar-brand{
+	color: white;
+}
+#bone{
+	color: white;
+}
+#btwo{
+	color: white;
+}
+#bthree{
+	color: white;
+}
+#home{
+	color: white;
+}
+#home:hover{
+	background-color: #426dab;
+}
+#btwo:hover{
+	background-color: #426dab;
+}
+#bthree:hover{
+	background-color: #426dab;
+}
+#bone:hover{
+	background-color: #426dab;
+}
+#hact{
+	background-color: #426dab;
+	color: white;
+}
+.lifir{
+	margin:0 0 10px 0;
+	border-bottom-style: solid;
+	border-bottom-color: white;
+	border-bottom-width: 1px;
+}
+#hello{
+	background-color: #ebebeb;
+	height: 55px;
+	width: 100%;
+	text-align: center;
+}
+#bicon{
+	width: 960px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#loggg{
+	float: left;
+	padding-left: 10px;
+}
