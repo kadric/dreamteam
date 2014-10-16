@@ -11,8 +11,8 @@
         <h:outputStylesheet library="bootstrap/css" name="bootstrap-theme.css" />
         <h:outputStylesheet library="bootstrap/css" name="bootstrap.min.css" />
         -->
-        <h:outputStylesheet library="css" name="style.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="style.css" />
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/test.ico"/>
     </h:head>
 
@@ -32,17 +32,21 @@
 			<ul class="nav navbar-nav">
                             <li>
                                 <h:link id="btwo" outcome="about">
-                                    <span class="glyphicon glyphicon-home"></span> About
+                                    <span class="glyphicon glyphicon-info-sign"></span> About
                                 </h:link>
                             </li>
                             <li>
                                 <h:link id="bthree" outcome="contact">
-                                    <span class="glyphicon glyphicon-home"></span> Contact
+                                    <span class="glyphicon glyphicon-envelope"></span> Contact
                                 </h:link>
                             </li>
                         </ul>
-                    </div>
-                    <button type="button" class="btn btn-info navbar-btn navbar-right" >Sign in</button>
+                    <!-- No Function yet, please do not remove
+                    <h:form>
+                        <h:commandButton value="Sign in" action="buttonOne" class="btn btn-info navbar-btn navbar-right"/>
+                    </h:form>
+                    -->
+                    </div>           
 		</div>
             </nav>
  
