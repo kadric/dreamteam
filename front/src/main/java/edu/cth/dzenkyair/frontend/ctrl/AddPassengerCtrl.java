@@ -54,8 +54,6 @@ public class AddPassengerCtrl implements Serializable {
             passengerBB.setError("Please type in all fields");
             return "addpassenger?faces-redirect=false";
         } else {
-            Flight f = flightModel.getFlightList().findAll().get(0);
-            Order o = new Order(f, flightModel.getUserList().findAll().get(0));
             List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
             if(ps == null) {
                 Passenger p = new Passenger(null, null, passengerBB.getFirstName(), 
@@ -71,5 +69,17 @@ public class AddPassengerCtrl implements Serializable {
             }   
         }
         return "addpassenger?faces-redirect=true";
+    }
+    
+    public String deletePassenger(String fname, String lname) {
+         List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
+         for(int i=0; i<ps.size(); i++) {
+             if(ps.get(i).getFirstName().equals(fname) && ps.get(i).getLastName().equals(lname)) {
+                 ps.remove(i);
+                 break;
+             }
+         }
+         externalContext.getSessionMap().put("passengerList", ps);
+         return "addpassenger?faces-redirect=true";
     }
 }
