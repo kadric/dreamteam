@@ -71,6 +71,17 @@ public class AddPassengerCtrl implements Serializable {
         return "addpassenger?faces-redirect=true";
     }
     
+    public String cont(){
+       List<Passenger> pl = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
+        if(pl == null){
+            passengerBB.setError("Please add passenger(s)");
+        return "addpassenger?faces-redirect=false";
+        }else{
+            return "register?faces-redirect=true";
+        }
+      
+    }
+    
     public String deletePassenger(String fname, String lname) {
          List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
          for(int i=0; i<ps.size(); i++) {

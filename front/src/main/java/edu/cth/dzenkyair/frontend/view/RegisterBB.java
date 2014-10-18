@@ -12,7 +12,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author hagakure
+ * @author matej
  */
 @Named
 @RequestScoped

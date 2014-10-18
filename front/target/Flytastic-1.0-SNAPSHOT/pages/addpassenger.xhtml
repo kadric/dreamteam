@@ -36,14 +36,16 @@
                                 </tr>
                             </ui:repeat>
                             <tr>
-                                <td><h:inputText value="#{addPassengerBB.firstName}"/> </td>
-                                <td><h:inputText value="#{addPassengerBB.lastName}"/> </td>
-                                <td><h:inputText value="#{addPassengerBB.baggage}"/> </td>
+                                <td><h:inputText class="form-control" value="#{addPassengerBB.firstName}"/> </td>
+                                <td><h:inputText class="form-control" value="#{addPassengerBB.lastName}"/> </td>
+                                <td><h:inputText class="form-control" value="#{addPassengerBB.baggage}"/> </td>
                                 <td></td>
                             </tr>
                         </table>
                         <h:commandButton class="btn btn-primary" value="Add passenger" action="#{addPassengerCtrl.addPassanger()}"  />
+                     
                     </h:panelGroup>
+                       <h:commandButton class="btn btn-primary" value="Continue" action="#{addPassengerCtrl.cont()}"  />
                 </h:form>
                 <h1><h:outputText value="#{addPassengerBB.error}" /></h1>
                 </div>
