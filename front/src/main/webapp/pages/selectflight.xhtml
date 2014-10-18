@@ -16,35 +16,37 @@
         <ui:composition template="/WEB-INF/template2.xhtml">
 
             <ui:define name="tcontent">
-                <h3>Select flight</h3>
-                <h:form>
-                    <h:panelGroup id="flightPanel" >
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Departure</th>
-                                    <th>Arrival</th>
-                                </tr>
-                            </thead>
-                            <ui:repeat var="flight" value="#{selectFlightBB.flightList}">
-                                <tr>
-                                    <td><h:selectOneRadio valueChangeListener="#{selectFlightCtrl.selectItem(flight.id)}" onclick="uncheckOthers(this);">
-                                            <f:selectItem itemValue="#{flight.id}" />
-                                    </h:selectOneRadio></td>
-                                    <td><h:outputText value="#{flight.line.fromAirport.name}" /></td>
-                                    <td><h:outputText value="#{flight.line.toAirport.name}" /></td>
-                                    <td><h:outputText value="#{flight.departure.time}" /></td>
-                                    <td><h:outputText value="#{flight.arrival.time}" /></td>
-                                </tr>
-                            </ui:repeat>
-                        </table>
-                        <h:commandButton class="btn btn-primary" value="Select flight" action="#{selectFlightCtrl.select()}"  />
-                    </h:panelGroup>
-                </h:form>
-                <h1><h:outputText value="#{selectFlightBB.error}" /></h1>
+                <div class="contbox">
+                    <h3>Select flight</h3>
+                    <h:form>
+                        <h:panelGroup id="flightPanel" >
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Departure</th>
+                                        <th>Arrival</th>
+                                    </tr>
+                                </thead>
+                                <ui:repeat var="flight" value="#{selectFlightBB.flightList}">
+                                    <tr>
+                                        <td><h:selectOneRadio valueChangeListener="#{selectFlightCtrl.selectItem(flight.id)}" onclick="uncheckOthers(this);">
+                                                <f:selectItem itemValue="#{flight.id}" />
+                                        </h:selectOneRadio></td>
+                                        <td><h:outputText value="#{flight.line.fromAirport.name}" /></td>
+                                        <td><h:outputText value="#{flight.line.toAirport.name}" /></td>
+                                        <td><h:outputText value="#{flight.departure.time}" /></td>
+                                        <td><h:outputText value="#{flight.arrival.time}" /></td>
+                                    </tr>
+                                </ui:repeat>
+                            </table>
+                            <h:commandButton class="btn btn-primary" value="Select flight" action="#{selectFlightCtrl.select()}"  />
+                        </h:panelGroup>
+                    </h:form>
+                    <h1><h:outputText value="#{selectFlightBB.error}" /></h1>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>
