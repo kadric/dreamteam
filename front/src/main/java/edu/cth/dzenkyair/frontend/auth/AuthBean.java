@@ -63,7 +63,7 @@ public class AuthBean implements Serializable {
                 getExternalContext();
         externalContext.invalidateSession();
         LOG.log(Level.INFO, "*** Logout success");
-        return "success";
+        return "login?faces-redirect=true";
     }
 
     // ------------------------------
