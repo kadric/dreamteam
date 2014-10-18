@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+   <h:body>
+        
+        <ui:composition template="/WEB-INF/template2.xhtml">
+
+            <ui:define name="tcontent">
+                
+                <div class="contbox">
+                    <h1>Register</h1>
+                    <h:form>
+                     <h:messages/>
+                        <h:panelGrid columns="3">
+                            <h1><h:outputText value="#{registerBB.error}" /></h1>
+                            <!--First name -->
+                            <h:outputLabel for="firstName" value="First Name"/>
+                            <h:inputText class="form-control" value="#{registerBB.firstName}" id="firstName"/>
+                            <!--Last name -->        
+                            <h:outputLabel for="lastName" value="Last Name"/>
+                            <h:inputText class="form-control" value="#{registerBB.lastName}" id="lastName"/>
+                            <!-- Password -->        
+                            <h:outputLabel for="password" value="Password"/>
+                            <h:inputSecret class="form-control" value="#{registerBB.password}" id="password"/>
+                            <!-- Confirm password -->
+                            <h:outputLabel for="confirmPassword" value="Confirm password"/>
+                            <h:inputSecret class="form-control" value="#{registerBB.confirmPassword}" id="confirmPassword"/>
+                            <!-- Email -->        
+                            <h:outputLabel for="email" value="Email"/>
+                            <h:inputText class="form-control" value="#{registerBB.email}" id="email"/>
+                            <!-- Adress -->
+                            <h:outputLabel for="adress" value="Adress"/>
+                            <h:inputText class="form-control" value="#{registerBB.adress}" id="adress"/>
+                            <!-- City -->
+                            <h:outputLabel for="city" value="City"/>
+                            <h:inputText class="form-control" value="#{registerBB.city}" id="city"/>
+                            <!-- Phone -->
+                            <h:outputLabel for="phone" value="Phone"/>
+                            <h:inputText class="form-control" value="#{registerBB.phone}" id="phone"/>
+                        </h:panelGrid>
+                     <br/>
+                 <h:commandButton class="btn btn-primary" id="button" value="Register" action="#{registerCtrl.register}"/>  
+                </h:form>
+            
+                            <br/>
+                </div>
+            </ui:define>
+            
+        </ui:composition>
+    </h:body>
+</html>

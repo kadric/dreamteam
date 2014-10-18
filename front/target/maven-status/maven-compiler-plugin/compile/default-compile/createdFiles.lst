@@ -1,2 +1,10 @@
+edu\cth\dzenkyair\frontend\ctrl\SearchFlightCtrl.class
+edu\cth\dzenkyair\frontend\view\SearchFlightBB.class
+edu\cth\dzenkyair\frontend\ctrl\SelectFlightCtrl.class
+edu\cth\dzenkyair\frontend\ctrl\RegisterCtrl.class
+edu\cth\dzenkyair\frontend\auth\AuthBean.class
 edu\cth\dzenkyair\frontend\view\SelectFlightBB.class
 edu\cth\dzenkyair\frontend\data\DefaultData.class
+edu\cth\dzenkyair\frontend\view\AddPassengerBB.class
+edu\cth\dzenkyair\frontend\ctrl\AddPassengerCtrl.class
+edu\cth\dzenkyair\frontend\view\RegisterBB.class

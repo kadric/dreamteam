@@ -242,3 +242,7 @@ body{
 	float: left;
 	padding-left: 10px;
 }
+
+#register-form{
+    margin-left: 50px
+}

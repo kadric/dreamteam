@@ -7,6 +7,10 @@
     <!-- NON CONDITIONAL NAV HERE -->
     <navigation-rule>
         <from-view-id>*</from-view-id>
+        <navigation-case>
+                <from-outcome>index</from-outcome>
+                <to-view-id>/index.xhtml</to-view-id>
+            </navigation-case>   
             <navigation-case>
                 <from-outcome>about</from-outcome>
                 <to-view-id>/pages/about.xhtml</to-view-id>
@@ -18,7 +22,35 @@
             <navigation-case>
                 <from-outcome>buttonOne</from-outcome>
                 <to-view-id>/pages/selectflight.xhtml</to-view-id>
-            </navigation-case>     
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>register</from-outcome>
+                <to-view-id>/pages/register.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>about</from-outcome>
+                <to-view-id>/pages/about.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>addpassenger</from-outcome>
+                <to-view-id>/pages/addpassenger.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>contact</from-outcome>
+                <to-view-id>/pages/contact.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>login</from-outcome>
+                <to-view-id>/pages/login.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>selectflight</from-outcome>
+                <to-view-id>/pages/selectflight.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>userpage</from-outcome>
+                <to-view-id>/pages/userpage.xhtml</to-view-id>
+            </navigation-case>                       
     </navigation-rule>         
     
         
