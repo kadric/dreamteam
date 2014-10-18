@@ -31,6 +31,11 @@ public class SelectFlightBB implements Serializable {
     private FlightModel flightModel;
     
     private Long id;
+    private String error;
+    
+    protected SelectFlightBB() {
+        // Must have for CDI
+    }
     
     public Collection<Flight> getFlightList() {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -56,5 +61,13 @@ public class SelectFlightBB implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getError() {
+        return error;
+    }
+    
+    public void setError(String error) {
+        this.error = error;
     }
 }
