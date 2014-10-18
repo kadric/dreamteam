@@ -18,8 +18,10 @@
                             </c:when>
                             <c:otherwise>
                                 <h3>Welcome #{sessionScope.user.email}</h3>
-
-                                <p>This a user-page!</p>
+                                
+                                <br/> <br/>
+                                <a href="editprofile.xhtml">Edit profile</a>
+                                <br/>
 
                                 <br/>
                                 <h:commandButton class="btn btn-primary" id="button" action="#{authBean.logout}" value="Logout"/>
