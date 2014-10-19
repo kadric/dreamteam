@@ -14,9 +14,34 @@
     <h:body>
         <ui:composition template="/WEB-INF/template2.xhtml">
             <ui:define name="tcontent"> 
-
-                      
-                    <br/> <br/>
+                <div class="contbox">
+                    <h:form>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>From</th>
+                                    <th>To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h:selectOneMenu value="#{listAirportsBB.fromId}" onchange="submit()">
+                                             <f:selectItems value="#{listAirportsBB.allAirport}" var="airport" 
+                                                            itemLabel="#{airport.name}" itemValue="#{airport.id}" />
+                                        </h:selectOneMenu>
+                                    </td>
+                                    <td>
+                                        <h:selectOneMenu value="#{listAirportsBB.lineId}" onchange="submit()">
+                                            <f:selectItems value="#{listAirportsBB.lines}" var="line" 
+                                                           itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </h:form>
+                </div>
             </ui:define>
         </ui:composition>
     <br />
