@@ -31,9 +31,6 @@ public class AddPassengerCtrl implements Serializable {
     
     private AddPassengerBB passengerBB;
         
-    FacesContext context = FacesContext.getCurrentInstance();
-    ExternalContext externalContext = context.getExternalContext();
-    
     protected AddPassengerCtrl() {
         // Must have for CDI
     }
@@ -44,8 +41,10 @@ public class AddPassengerCtrl implements Serializable {
     }
     
     public Collection<Passenger> getPassengerList() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
         List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
-        
+
         return ps;
     }
 
@@ -54,6 +53,8 @@ public class AddPassengerCtrl implements Serializable {
             passengerBB.setError("Please type in all fields");
             return "addpassenger?faces-redirect=false";
         } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            ExternalContext externalContext = context.getExternalContext();
             List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
             if(ps == null) {
                 Passenger p = new Passenger(null, null, passengerBB.getFirstName(), 
@@ -72,7 +73,9 @@ public class AddPassengerCtrl implements Serializable {
     }
     
     public String cont(){
-       List<Passenger> pl = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
+        List<Passenger> pl = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
         if(pl == null){
             passengerBB.setError("Please add passenger(s)");
         return "addpassenger?faces-redirect=false";
@@ -83,14 +86,19 @@ public class AddPassengerCtrl implements Serializable {
     }
     
     public String deletePassenger(String fname, String lname) {
-         List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
-         for(int i=0; i<ps.size(); i++) {
-             if(ps.get(i).getFirstName().equals(fname) && ps.get(i).getLastName().equals(lname)) {
-                 ps.remove(i);
-                 break;
-             }
-         }
-         externalContext.getSessionMap().put("passengerList", ps);
-         return "addpassenger?faces-redirect=true";
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
+        List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
+        for(int i=0; i<ps.size(); i++) {
+            if(ps.get(i).getFirstName().equals(fname) && ps.get(i).getLastName().equals(lname)) {
+                ps.remove(i);
+                break;
+            }
+        }
+        if(ps.size() <= 0)
+            externalContext.getSessionMap().put("passengerList", null);
+        else
+            externalContext.getSessionMap().put("passengerList", ps);
+        return "addpassenger?faces-redirect=true";
     }
 }
