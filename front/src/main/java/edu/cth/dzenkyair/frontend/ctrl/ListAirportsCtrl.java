@@ -4,6 +4,7 @@ import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Line;
 import edu.cth.dzenkyair.frontend.view.ListAirportsBB;
 import java.io.Serializable;
+import java.util.Calendar;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -42,9 +43,12 @@ public class ListAirportsCtrl implements Serializable {
             return "index?faces-redirect=false";
         }
         Line l = flightModel.getLineList().find(airportsBB.getLineId());
+        Calendar d = Calendar.getInstance();
+        d.set(2014, 01, 01);
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
         externalContext.getSessionMap().put("line", l);
+        externalContext.getSessionMap().put("departure", d);
         return "selectflight?faces-redirect=true";
     }
 }

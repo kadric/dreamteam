@@ -41,14 +41,6 @@ public class SelectFlightBB implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
         
-        // INIT
-        Long lineId = (long) 5;
-        Line initLine = flightModel.getLineList().find(lineId);
-        Calendar initDeparture = Calendar.getInstance();
-        initDeparture.set(2014, 01, 01);
-        externalContext.getSessionMap().put("line", initLine); 
-        externalContext.getSessionMap().put("departure", initDeparture); 
-        
         Line line = (Line) externalContext.getSessionMap().get("line");
         Calendar departure = (Calendar) externalContext.getSessionMap().get("departure");
         
