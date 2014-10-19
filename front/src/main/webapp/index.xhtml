@@ -26,21 +26,19 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h:selectOneMenu value="#{listAirportsBB.fromId}" onchange="submit()">
+                                        <h:selectOneMenu class="form-control" value="#{listAirportsBB.fromId}" onchange="submit()">
                                              <f:selectItems value="#{listAirportsBB.allAirport}" var="airport" 
                                                             itemLabel="#{airport.name}" itemValue="#{airport.id}" />
                                         </h:selectOneMenu>
                                     </td>
                                     <td>
-                                        <h:selectOneMenu value="#{listAirportsBB.lineId}" onchange="submit()">
+                                        <h:selectOneMenu class="form-control" value="#{listAirportsBB.lineId}">
                                             <f:selectItems value="#{listAirportsBB.lines}" var="line" 
                                                            itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
                                         </h:selectOneMenu>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h:commandButton value="Add" action="#{listAirportsCtrl.search()}" class="btn btn-primary"/>
+                                    <td>
+                                        <h:commandButton value="Search" action="#{listAirportsCtrl.search()}" class="btn btn-primary"/>
                                     </td>
                                 </tr>
                             </tbody>
