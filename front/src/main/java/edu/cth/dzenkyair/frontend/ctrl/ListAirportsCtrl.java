@@ -37,8 +37,10 @@ public class ListAirportsCtrl implements Serializable {
         airportsBB.setFromId(id);
     }
     public String search() {
-        if(airportsBB.getLineId() == null)
+        if(airportsBB.getLineId() == null) {
+            airportsBB.setError("Please select a destination");
             return "index?faces-redirect=false";
+        }
         Line l = flightModel.getLineList().find(airportsBB.getLineId());
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();

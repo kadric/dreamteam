@@ -38,9 +38,15 @@
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h:commandButton value="Add" action="#{listAirportsCtrl.search()}" class="btn btn-primary"/>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </h:form>
+                    <h1><h:outputText value="#{listAirportsBB.error}" /></h1>
                 </div>
             </ui:define>
         </ui:composition>

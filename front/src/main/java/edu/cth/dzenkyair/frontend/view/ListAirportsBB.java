@@ -27,6 +27,7 @@ public class ListAirportsBB implements Serializable {
     private int year;
     private int month;
     private int day;
+    private String error;
     
     protected ListAirportsBB() {
         // Must have for CDI
@@ -81,5 +82,12 @@ public class ListAirportsBB implements Serializable {
 
     public void setDay(int day) {
         this.day = day;
+    }
+    
+    public String getError() {
+        return error;
+    }
+    public void setError(String error) {
+        this.error = error;
     }
 }
