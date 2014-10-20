@@ -6,12 +6,12 @@
 
     <h:head>
         <title>Dzenky Air</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
         <!-- WHY DOESNT GLYPHICONS WORK WITH BOOTSTRAP FROM OUTPUTSTYLESHEET?
         <h:outputStylesheet library="bootstrap/css" name="bootstrap-theme.css" />
         <h:outputStylesheet library="bootstrap/css" name="bootstrap.min.css" />
         -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
         <h:outputStylesheet library="css" name="style.css" />
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/test.ico"/>
     </h:head>
@@ -31,11 +31,16 @@
                     <div>
 			<ul class="nav navbar-nav">
                             <li>
+                                <h:link id="home" outcome="home">
+                                    <span class="glyphicon glyphicon-home"></span> Home
+                                </h:link>
+                            </li>
+                            <li>
                                 <h:link id="btwo" outcome="about">
                                     <span class="glyphicon glyphicon-info-sign"></span> About
                                 </h:link>
                             </li>
-                            <li>
+                            <li> 
                                 <h:link id="bthree" outcome="contact">
                                     <span class="glyphicon glyphicon-envelope"></span> Contact
                                 </h:link>
@@ -92,9 +97,9 @@
  
         </div>
  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <h:outputScript library="js" name="myjs.js" />
     </h:body>
 </html>

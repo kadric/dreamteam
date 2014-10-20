@@ -14,6 +14,53 @@
     <h:body>
         <ui:composition template="/WEB-INF/template2.xhtml">
             <ui:define name="tcontent"> 
+                
+                <div class="jumbotron" id="welcome">
+					
+				<div id="heyeyey">
+					<h1>Visit Europe, Fly Dzenky Air.</h1>
+				</div>
+				
+		
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1" ></li>
+					<li data-target="#myCarousel" data-slide-to="2" ></li>
+					<li data-target="#myCarousel" data-slide-to="3" ></li>
+                                        <li data-target="#myCarousel" data-slide-to="4" ></li>
+				</ol> 
+				<div class="carousel-inner">
+					<div class="item active">
+                                            <h:graphicImage value="/resources/images/lon.jpg" class="img-responsive" />
+                                        </div>
+					
+                                        <div class="item">
+                                            <h:graphicImage value="/resources/images/got.jpg" class="img-responsive" />
+                                        </div>
+                                        
+                                        <div class="item">	
+                                            <h:graphicImage value="/resources/images/ist.jpg" class="img-responsive" />
+                                        </div>
+					
+                                        <div class="item">	
+                                            <h:graphicImage value="/resources/images/sar.jpg" class="img-responsive" />
+                                        </div>
+                                    
+                                        <div class="item">	
+                                            <h:graphicImage value="/resources/images/furt.jpg" class="img-responsive" />
+                                        </div>
+				</div>
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+	
+				</div>	
+			</div>
+                
                 <div class="contbox">
                     <h:form>
                         <table>
@@ -46,6 +93,13 @@
                     </h:form>
                     <h1><h:outputText value="#{listAirportsBB.error}" /></h1>
                 </div>
+                
+                <div class="jumbotron" id="inf">
+                    <h1>Fly with Air Dzenky.</h1>	
+                    <p id="paras">Since the beginning of Air Dzenky, We have been flying to 4 destinations. We work very hard to do our best for our customers, and we have the highest customer satisfaction rate in Europe. We are the only airline with 5 out of 5 stars! Find your flight, click the button below!</p>
+                    <p><h:link class="btn btn-info btn-lg" outcome="book"/></p>	
+                </div>
+                
             </ui:define>
         </ui:composition>
     <br />
