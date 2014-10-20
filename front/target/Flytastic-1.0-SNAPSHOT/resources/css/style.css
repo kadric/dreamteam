@@ -37,12 +37,23 @@ body{
 #heyeyey{
 	padding-bottom: 20px;
 }
-#flif{
+.flif{
 	width: 960px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 5px;
+}
+.lt{
+    text-align: left;
+}
+.ct{
+    text-align: center;
+}
+.centerpic{
+        width: 960px;
+	display: block;
+	margin-left: auto;
 }
 .contbox{
 	width: 960px;
