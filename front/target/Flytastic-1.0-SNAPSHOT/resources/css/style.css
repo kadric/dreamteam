@@ -233,6 +233,15 @@ body{
         transition-duration: 200ms;
         transition-timing-function: linear;
 }
+#bfour{
+    color: white;
+        transition-property: background;
+        transition-duration: 200ms;
+        transition-timing-function: linear;
+}
+#bfour:hover{
+	background-color: #426dab;
+}
 #home:hover{
 	background-color: #426dab;
 }
