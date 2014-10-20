@@ -50,6 +50,26 @@
             <navigation-case>
                 <from-outcome>userpage</from-outcome>
                 <to-view-id>/pages/userpage.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>london</from-outcome>
+                <to-view-id>/pages/footerPages/london.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>gothenburg</from-outcome>
+                <to-view-id>/pages/footerPages/gothenburg.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>sarajevo</from-outcome>
+                <to-view-id>/pages/footerPages/sarajevo.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>istanbul</from-outcome>
+                <to-view-id>/pages/footerPages/istanbul.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>frankfurt</from-outcome>
+                <to-view-id>/pages/footerPages/frankfurt.xhtml</to-view-id>
             </navigation-case>                       
     </navigation-rule>         
     
