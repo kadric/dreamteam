@@ -49,6 +49,6 @@ public class ListAirportsCtrl implements Serializable {
         ExternalContext externalContext = context.getExternalContext();
         externalContext.getSessionMap().put("line", l);
         externalContext.getSessionMap().put("departure", d);
-        return "selectflight?faces-redirect=true";
+        return "pages/selectflight?faces-redirect=true";
     }
 }

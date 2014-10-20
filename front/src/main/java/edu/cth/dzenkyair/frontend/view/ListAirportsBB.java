@@ -38,10 +38,10 @@ public class ListAirportsBB implements Serializable {
     }
     
     public Collection<Line> getLines() {
-        if(fromId == null)
+        /*if(fromId == null)
             return new ArrayList<Line>();
-        Airport airport = flightModel.getAirportList().find(fromId);
-        return flightModel.getLineList().getByFromAirport(airport);
+        Airport airport = flightModel.getAirportList().find(fromId);*/
+        return flightModel.getLineList().findAll();
     }
     
     public Long getFromId() {

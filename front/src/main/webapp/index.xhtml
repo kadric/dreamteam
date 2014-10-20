@@ -66,22 +66,16 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>From</th>
-                                    <th>To</th>
+                                    <th>Line</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h:selectOneMenu class="form-control" value="#{listAirportsBB.fromId}" onchange="submit()">
-                                             <f:selectItems value="#{listAirportsBB.allAirport}" var="airport" 
-                                                            itemLabel="#{airport.name}" itemValue="#{airport.id}" />
-                                        </h:selectOneMenu>
-                                    </td>
-                                    <td>
                                         <h:selectOneMenu class="form-control" value="#{listAirportsBB.lineId}">
+                                            <f:selectItem itemLabel="- Select line -" noSelectionOption="true" />
                                             <f:selectItems value="#{listAirportsBB.lines}" var="line" 
-                                                           itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
+                                                           itemLabel="#{line.fromAirport.name} - #{line.toAirport.name}" itemValue="#{line.id}" />
                                         </h:selectOneMenu>
                                     </td>
                                     <td>
@@ -97,7 +91,6 @@
                 <div class="jumbotron" id="inf">
                     <h1>Fly with Air Dzenky.</h1>	
                     <p id="paras">Since the beginning of Air Dzenky, We have been flying to 4 destinations. We work very hard to do our best for our customers, and we have the highest customer satisfaction rate in Europe. We are the only airline with 5 out of 5 stars! Find your flight, click the button below!</p>
-                    <p><h:link class="btn btn-info btn-lg" outcome="book"/></p>	
                 </div>
                 
             </ui:define>
