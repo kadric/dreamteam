@@ -1,12 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
     <h:body>
-        Hello from Facelets
+        <ui:composition template="/WEB-INF/template2.xhtml">
+         
+            <ui:define name="tcontent">
+                
+                <div class="jumbotron flif">
+                    
+                    <h1 class="ct">Gothenburg</h1>
+                        
+                        <hr/>
+                        <h:graphicImage value="/resources/images/got2.jpg" class="img-responsive centerpic" />
+                        <hr/>
+                        <br/>
+                        <p class="lt">
+                            Gothenburg is a big city with a charming small-town feel. The atmosphere is nice and relaxed, you can walk around the city centre and explore the different neighbourhoods and there’s a café on every street corner. The city has lively entertainment and attractions all year round, ranging from the amusement park Liseberg and the Gothenburg Opera, to various sporting events, the annual film festival, book fair and music festival Way Out West.
+                            <br/><br/>
+                            It’s easy to enjoy culture and attractions and at the same time explore the sea, the parks and the city pulse. Göteborg City Card gives you all the best of Gothenburg. You get free admission to attractions, museums, sightseeing and more, including free public transport and parking.
+                            <br/><br/>
+                            Seafood is highly recommended in Gothenburg. The fresh produce is excellent, whether you choose a prawn sandwich in a café or a perfectly cooked halibut in a fine dining establishment. Enjoy the whole range – from relaxed neighbourhood pubs and family-friendly restaurants to trendy eateries and gourmet.
+                            <br/><br/>
+                            Fika – having a cup of tea or coffee along with something sweet – is an important part of life here. As early as 1890, artists were sitting at Junggrens on the main boulevard Avenyn – an establishment that helped bringing the café trend into the 21st century. Today you can choose from everything from Italian coffee bars to sweet patisseries and beyond.
+                            <br/><br/>
+                            The main boulevard Avenyn is lined with restaurants and clubs with dance floors and bars over several floors. The nightlife here attracts a mixed crowd of club kids to office workers. Around the square Järntorget, the streets Långgatorna and in Linné you will find the more alternative side of the nightlife, focused around music and culture.
+                            <br/><br/>
+                            Gothenburg has plenty of great shopping. The mix includes small independent shops, modern department stores and gallerias – everything within walking distance. You will find something that you like no matter if you’re after local design, vintage or international brands.  Nordstan is the leading shopping centre in Sweden with around 37 million visitors per year. You will find not only find the large chain stores here, but also a smaller niche boutiques.
+                            <br/><br/>
+                            Just outside Nordstan, you find the galleria Arkaden and Fredsgatan, with shops such as Peak Performance, Zara, Mango, Stadium and the fashionable department store NK. Pass through the galleria Kompassen with Levi's store, Monki, Scorett and more, to Kungsgatan. It’s packed with shops here and on side streets like Lilla Nygatan. At the very end of Kungsgatan you’ll find the trendy Magasinsgatan neighbourhood. Small cool boutiques with Scandinavian fashion like Velour and Acne is located side by side with popular cafés serving sourdough bread to go with the coffee. 
+                            <br/><br/>
+                            Are you after something else than clothes, shoes and home decor? Don’t miss the Market Hall (Saluhallen) at Kungstorget. Lose yourself among the multiple choices of local Swedish delicacies, mixed with exotic products from all over the world.  Other great neighbourhoods for shopping are around Linnégatan, Järntorget, Andra Långgatan and the cosy streets of Haga. Explore new designers with their own boutiques, mixed with plenty of second hand and vintage shops. Shopping in Gothenburg is definitely an experience and you can easily spend days if you wish. But don’t worry, the distances are short so if your schedule is tight you can also manage to visit many of the shops within a few hours.
+                        </p>
+                        
+                        
+                </div>
+                
+            </ui:define>
+            
+        </ui:composition> 
     </h:body>
 </html>
-
