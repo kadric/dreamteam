@@ -205,15 +205,27 @@ body{
 }
 #bone{
 	color: white;
+        transition-property: background;
+        transition-duration: 200ms;
+        transition-timing-function: linear;
 }
 #btwo{
 	color: white;
+        transition-property: background;
+        transition-duration: 200ms;
+        transition-timing-function: linear;
 }
 #bthree{
 	color: white;
+        transition-property: background;
+        transition-duration: 200ms;
+        transition-timing-function: linear;
 }
 #home{
 	color: white;
+        transition-property: background;
+        transition-duration: 200ms;
+        transition-timing-function: linear;
 }
 #home:hover{
 	background-color: #426dab;
