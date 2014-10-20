@@ -70,6 +70,10 @@
             <navigation-case>
                 <from-outcome>frankfurt</from-outcome>
                 <to-view-id>/pages/footerPages/frankfurt.xhtml</to-view-id>
+            </navigation-case>  
+            <navigation-case>
+                <from-outcome>faqs</from-outcome>
+                <to-view-id>/pages/footerPages/faqs.xhtml</to-view-id>
             </navigation-case>                       
     </navigation-rule>         
     

@@ -20,6 +20,12 @@ body{
 	background-color: white;
 	font-family: 'Raleway', sans-serif;
 }
+.faq:link{
+    color: black;
+}
+.faq:hover{
+    color: black;
+}
 .btn-info{
     color: white;
     background-color: #d60d8c;
