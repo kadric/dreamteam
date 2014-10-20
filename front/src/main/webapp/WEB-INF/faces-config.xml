@@ -82,10 +82,6 @@
             <navigation-case>
                 <from-outcome>career</from-outcome>
                 <to-view-id>/pages/footerPages/career.xhtml</to-view-id>
-            </navigation-case>
-            <navigation-case>
-                <from-outcome>info</from-outcome>
-                <to-view-id>/pages/info.xhtml</to-view-id>
             </navigation-case>                   
     </navigation-rule>         
     
