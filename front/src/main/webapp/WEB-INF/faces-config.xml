@@ -78,7 +78,11 @@
             <navigation-case>
                 <from-outcome>enviro</from-outcome>
                 <to-view-id>/pages/footerPages/enviro.xhtml</to-view-id>
-            </navigation-case>                       
+            </navigation-case>    
+            <navigation-case>
+                <from-outcome>career</from-outcome>
+                <to-view-id>/pages/footerPages/career.xhtml</to-view-id>
+            </navigation-case>                   
     </navigation-rule>         
     
         
