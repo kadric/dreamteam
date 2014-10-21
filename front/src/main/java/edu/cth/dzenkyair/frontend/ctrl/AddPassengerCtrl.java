@@ -47,9 +47,17 @@ public class AddPassengerCtrl implements Serializable {
 
         return ps;
     }
+    public Collection<String> getBaggages(){
+        List<String> b = new ArrayList<String>();
+        b.add("Handbag");
+        b.add("Small");
+        b.add("Large");
+        return b;
+    
+    } 
 
     public String addPassanger() {
-        if(passengerBB.getFirstName().isEmpty() || passengerBB.getLastName().isEmpty() || passengerBB.getBaggage().isEmpty()) {
+        if(passengerBB.getFirstName().isEmpty() || passengerBB.getLastName().isEmpty() || passengerBB.getBaggage() == null) {
             passengerBB.setError("Please type in all fields");
             return "addpassenger?faces-redirect=false";
         } else {

@@ -29,7 +29,7 @@
                                 <tr>
                                     <td><h:outputText value="#{passenger.firstName}" /></td>
                                     <td><h:outputText value="#{passenger.lastName}" /></td>
-                                    <td><h:outputText value="#{passenger.baggage}" /></td>
+                                    <td><h:outputText value="#{passenger.baggage}"/></td>
                                     <td><h:commandButton class="btn btn-danger" value="Delete" 
                                                          action="#{addPassengerCtrl.deletePassenger(passenger.firstName,
                                                                                   passenger.lastName)}"  /></td>
@@ -38,8 +38,12 @@
                             <tr>
                                 <td><h:inputText class="form-control" value="#{addPassengerBB.firstName}"/> </td>
                                 <td><h:inputText class="form-control" value="#{addPassengerBB.lastName}"/> </td>
-                                <td><h:inputText class="form-control" value="#{addPassengerBB.baggage}"/> </td>
-                                <td></td>
+                                <td><td><h:selectOneMenu class="form-control" value="#{addPassengerBB.baggage}">
+                                            <f:selectItem itemLabel="- Select line -" noSelectionOption="true" />
+                                            <f:selectItems value="#{addPassengerCtrl.baggages}" var="baggage" 
+                                                           itemLabel="#{baggage}" />
+                                        </h:selectOneMenu> </td>
+                                <td></td></td>
                             </tr>
                         </table>
                         <h:commandButton class="btn btn-primary" value="Add passenger" action="#{addPassengerCtrl.addPassanger()}"  />

@@ -1,10 +1,8 @@
 
 package edu.cth.dzenkyair.frontend.view;
 
+
 import java.io.Serializable;
-import java.util.logging.Level;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -21,6 +19,8 @@ public class AddPassengerBB implements Serializable {
     private String baggage;
     private String error;
     
+    
+  
     public String getFirstName() {
         return firstName;
     }

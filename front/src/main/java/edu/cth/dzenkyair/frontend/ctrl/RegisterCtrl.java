@@ -87,7 +87,7 @@ public class RegisterCtrl implements Serializable{
             
             
             }
-        return "login?faces-redirect=true";
+        return "submitorder?faces-redirect=true";
     }
       
     
