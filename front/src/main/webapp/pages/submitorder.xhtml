@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:body>
+        <ui:composition template="/WEB-INF/template2.xhtml">
+            <ui:define name="tcontent">
+                <div class="contbox">
+                    <h3>Submit order</h3>
+                    <h:form>
+                        <h:panelGroup id="orderPanel" >
+                            <h4>Flight</h4>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Departure</th>
+                                        <th>Arrival</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td><h:outputText value="#{submitOrder.flight.line.fromAirport.name}" /></td>
+                                    <td><h:outputText value="#{submitOrder.flight.line.toAirport.name}" /></td>
+                                    <td><h:outputText value="#{submitOrder.flight.departure.time}" /></td>
+                                    <td><h:outputText value="#{submitOrder.flight.arrival.time}" /></td>
+                                </tr>
+                            </table>
+                            <h4>Passengers</h4>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>First name</th>
+                                        <th>Last name</th>
+                                        <th>Baggage type</th>
+                                    </tr>
+                                </thead>
+                                <ui:repeat var="passenger" value="#{submitOrder.passengerList}">
+                                    <tr>
+                                        <td><h:outputText value="#{passenger.firstName}" /></td>
+                                        <td><h:outputText value="#{passenger.lastName}" /></td>
+                                        <td><h:outputText value="#{passenger.baggage}" /></td>
+                                    </tr>
+                                </ui:repeat>
+                            </table>
+                            <h:commandButton class="btn btn-primary" value="Submit order" action="#{submitOrder.submitOrder()}"  />
+                        </h:panelGroup>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
