@@ -6,12 +6,12 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-10-16T21:45:42")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-10-21T21:59:50")
 @StaticMetamodel(User.class)
 public class User_ { 
 
+    public static volatile SingularAttribute<User, String> email;
     public static volatile SingularAttribute<User, String> password;
     public static volatile ListAttribute<User, Groups> groups;
-    public static volatile SingularAttribute<User, String> email;
 
 }
