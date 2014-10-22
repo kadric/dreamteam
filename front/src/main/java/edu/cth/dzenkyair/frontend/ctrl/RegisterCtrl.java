@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -36,7 +38,7 @@ public class RegisterCtrl implements Serializable{
     FacesContext context = FacesContext.getCurrentInstance();
     ExternalContext externalContext = context.getExternalContext();
     
-    
+     private static final Logger LOG = Logger.getLogger(RegisterCtrl.class.getSimpleName());
     protected RegisterCtrl(){
     
     }
@@ -90,6 +92,33 @@ public class RegisterCtrl implements Serializable{
         return "submitorder?faces-redirect=true";
     }
       
+    public String login() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
+
+        LOG.log(Level.INFO, "*** Try login {0} {1}", new Object[]{registerBB.getLoginEmail(), registerBB.getLoginPassword()});
+        
+        // Really check is there some data in database?
+        List<User> us =  flightModel.getUserList().getByEmail(registerBB.getLoginEmail());
+        if(us.size() <= 0) {
+            LOG.log(Level.INFO, "*** Login failed");
+            registerBB.setError("The username is wrong");
+            return "login?faces-redirect=false";
+        }
+        User u = us.get(0);
+        
+        LOG.log(Level.INFO, "*** Found {0} {1}", new Object[]{u.getEmail(), u.getPassword()});
+                
+        if(!(u.getPassword().equals(registerBB.getLoginPassword()))) {
+            LOG.log(Level.INFO, "*** Login failed");
+            registerBB.setError("The password is wrong");
+            return "register?faces-redirect=false";
+        }
+        
+        LOG.log(Level.INFO, "*** Login success");
+        externalContext.getSessionMap().put("user", u);  // Store User in session
+        return "submitorder?faces-redirect=true";
+    }
     
    
 }

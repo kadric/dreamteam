@@ -18,43 +18,90 @@ and open the template in the editor.
 
             <ui:define name="tcontent">
                 
-                <div class="contbox">
+               
                     <h1>Register</h1>
-                    <h:form>
-                     <h:messages/>
-                        <h:panelGrid columns="3">
-                            <h1><h:outputText value="#{registerBB.error}" /></h1>
-                            <!--First name -->
-                            <h:outputLabel for="firstName" value="First Name"/>
-                            <h:inputText class="form-control" value="#{registerBB.firstName}" id="firstName"/>
-                            <!--Last name -->        
-                            <h:outputLabel for="lastName" value="Last Name"/>
-                            <h:inputText class="form-control" value="#{registerBB.lastName}" id="lastName"/>
-                            <!-- Password -->        
-                            <h:outputLabel for="password" value="Password"/>
-                            <h:inputSecret class="form-control" value="#{registerBB.password}" id="password"/>
-                            <!-- Confirm password -->
-                            <h:outputLabel for="confirmPassword" value="Confirm password"/>
-                            <h:inputSecret class="form-control" value="#{registerBB.confirmPassword}" id="confirmPassword"/>
-                            <!-- Email -->        
-                            <h:outputLabel for="email" value="Email"/>
-                            <h:inputText class="form-control" value="#{registerBB.email}" id="email"/>
-                            <!-- Adress -->
-                            <h:outputLabel for="adress" value="Adress"/>
-                            <h:inputText class="form-control" value="#{registerBB.adress}" id="adress"/>
-                            <!-- City -->
-                            <h:outputLabel for="city" value="City"/>
-                            <h:inputText class="form-control" value="#{registerBB.city}" id="city"/>
-                            <!-- Phone -->
-                            <h:outputLabel for="phone" value="Phone"/>
-                            <h:inputText class="form-control" value="#{registerBB.phone}" id="phone"/>
+                    
+                    <div class="container">
+  
+  
+                            <div class="row">
+                                <div class="col-md-4">
+             
+                                    <div class="contbox"><h4>Please login or register to continue</h4><br/></div>
+    
+            <div class="panel panel-default">
+                    <div class="panel-heading"><h3>Log in.</h3></div>
+                        <div class="panel-body">  
+                            <h:form id="login-form">
+                                <h:messages/>
+                    
+                                 <h:panelGrid columns="3">
+                                    <h:outputLabel for="loginEmail" value="Email"/>
+                                    <h:inputText class="form-control" value="#{registerBB.loginEmail}" id="loginEmail"/>
+                                    <h:message for="loginEMail" />
+                                    <h:outputLabel for="loginPassword" value="Password"/>
+                                    <h:inputSecret class="form-control" value="#{registerBB.loginPassword}" id="loginPassword"/>  
+                                    <h:message for="loginPassword" />
+                                </h:panelGrid> 
+                                
+                                <h:commandButton class="btn btn-primary" id="button" value="Login" action="#{registerCtrl.login}"/>                         
+                            </h:form>
+                            
+   <h1><h:outputText value="#{authBean.error}" /></h1></div>
+                    </div>
+                  </div>
+   
+                                <div class="col-md-2"></div>  
+                                
+                                
+            <div class="col-md-4">
+               <div class="panel panel-default">
+                 <div class="panel-heading"><h3>Register</h3></div>
+                    <div class="panel-body"> 
+                
+                        <h:form>
+                        <h:messages/>
+                            <h:panelGrid columns="3">
+                                <h1><h:outputText value="#{registerBB.error}" /></h1>
+                                <!--First name -->
+                                <h:outputLabel for="firstName" value="First Name"/>
+                                <h:inputText class="form-control" value="#{registerBB.firstName}" id="firstName"/>
+                                <!--Last name -->        
+                                <h:outputLabel for="lastName" value="Last Name"/>
+                                <h:inputText class="form-control" value="#{registerBB.lastName}" id="lastName"/>
+                                <!-- Password -->        
+                                <h:outputLabel for="password" value="Password"/>
+                                <h:inputSecret class="form-control" value="#{registerBB.password}" id="password"/>
+                                <!-- Confirm password -->
+                                <h:outputLabel for="confirmPassword" value="Confirm password"/>
+                                <h:inputSecret class="form-control" value="#{registerBB.confirmPassword}" id="confirmPassword"/>
+                                <!-- Email -->        
+                                <h:outputLabel for="email" value="Email"/>
+                                <h:inputText class="form-control" value="#{registerBB.email}" id="email"/>
+                                <!-- Adress -->
+                                <h:outputLabel for="adress" value="Adress"/>
+                                <h:inputText class="form-control" value="#{registerBB.adress}" id="adress"/>
+                                <!-- City -->
+                                <h:outputLabel for="city" value="City"/>
+                                <h:inputText class="form-control" value="#{registerBB.city}" id="city"/>
+                                <!-- Phone -->
+                                <h:outputLabel for="phone" value="Phone"/>
+                                <h:inputText class="form-control" value="#{registerBB.phone}" id="phone"/>
                         </h:panelGrid>
                      <br/>
-                 <h:commandButton class="btn btn-primary" id="button" value="Register" action="#{registerCtrl.register}"/>  
-                </h:form>
+                               <h:commandButton class="btn btn-primary" id="button" value="Register" action="#{registerCtrl.register}"/>  
+               </h:form>
+            </div>
+          </div>
+        </div>
+         
+    
             
-                            <br/>
-                </div>
+    </div><!-- end of row -->
+                              
+                   
+  </div> <!-- end of main container -->
+                    
             </ui:define>
             
         </ui:composition>

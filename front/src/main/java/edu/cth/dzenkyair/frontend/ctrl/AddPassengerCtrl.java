@@ -88,7 +88,12 @@ public class AddPassengerCtrl implements Serializable {
             passengerBB.setError("Please add passenger(s)");
         return "addpassenger?faces-redirect=false";
         }else{
+            
+            if(externalContext.getSessionMap().get("user") == null){
             return "register?faces-redirect=true";
+            }else{
+                return "submitorder?faces-redirect=true";
+            }
         }
       
     }

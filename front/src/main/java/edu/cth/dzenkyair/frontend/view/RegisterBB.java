@@ -28,15 +28,14 @@ public class RegisterBB implements Serializable{
     private String city;
     private Long   phone;
     private String error;
-
+    private String loginEmail;
+    private String loginPassword;
     
     public RegisterBB() {
         ;
     }
     
-    
-    
-
+   
     public String getFirstName() {
         return firstName;
     }
@@ -107,6 +106,22 @@ public class RegisterBB implements Serializable{
 
     public void setError(String error) {
         this.error = error;
+    }
+
+    public String getLoginEmail() {
+        return loginEmail;
+    }
+
+    public void setLoginEmail(String loginEmail) {
+        this.loginEmail = loginEmail;
+    }
+
+    public String getLoginPassword() {
+        return loginPassword;
+    }
+
+    public void setLoginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
     }
     
     
