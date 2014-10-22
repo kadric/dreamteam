@@ -28,6 +28,7 @@
                                         <th>To</th>
                                         <th>Departure</th>
                                         <th>Arrival</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <ui:repeat var="flight" value="#{selectFlightBB.flightList}">
@@ -39,6 +40,7 @@
                                         <td><h:outputText value="#{flight.line.toAirport.name}" /></td>
                                         <td><h:outputText value="#{flight.departure.time}" /></td>
                                         <td><h:outputText value="#{flight.arrival.time}" /></td>
+                                        <td>€<h:outputText value="#{flight.price}" /></td>
                                     </tr>
                                 </ui:repeat>
                             </table>
