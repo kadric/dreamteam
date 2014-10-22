@@ -43,6 +43,35 @@ public class SubmitOrder implements Serializable {
         return ps;
     }
     
+    public double getFlightPrice() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
+        Flight f = (Flight) externalContext.getSessionMap().get("flight");
+        return f.getPrice();
+    }
+    
+    public double getBaggagePrice(String baggage) {
+        if(baggage.equals("Large"))
+            return 20;
+        else if(baggage.equals("Small"))
+            return 10;
+        else
+            return 0;
+    }
+    
+    public double getTotalPrice() {
+        double total = 0;
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = context.getExternalContext();
+        List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
+        if(ps == null)
+            return total;
+        for(int i=0; i<ps.size(); i++) {
+            total = total + getFlightPrice() + getBaggagePrice(ps.get(i).getBaggage());
+        }
+        return total;
+    }
+    
     public String submitOrder() {
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();

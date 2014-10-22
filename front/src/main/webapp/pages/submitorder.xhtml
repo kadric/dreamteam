@@ -34,17 +34,22 @@
                                     <tr>
                                         <th>First name</th>
                                         <th>Last name</th>
+                                        <th>Flight price</th>
                                         <th>Baggage type</th>
+                                        <th>Baggage price</th>
                                     </tr>
                                 </thead>
                                 <ui:repeat var="passenger" value="#{submitOrder.passengerList}">
                                     <tr>
                                         <td><h:outputText value="#{passenger.firstName}" /></td>
                                         <td><h:outputText value="#{passenger.lastName}" /></td>
+                                        <td>€<h:outputText value="#{submitOrder.flightPrice}" /></td>
                                         <td><h:outputText value="#{passenger.baggage}" /></td>
+                                        <td>€<h:outputText value="#{submitOrder.getBaggagePrice(passenger.baggage)}" /></td>
                                     </tr>
                                 </ui:repeat>
                             </table>
+                            <h4>Total price: €<h:outputText value="#{submitOrder.totalPrice}" /></h4>
                             <h:commandButton class="btn btn-primary" value="Submit order" action="#{submitOrder.submitOrder()}"  />
                         </h:panelGroup>
                     </h:form>
