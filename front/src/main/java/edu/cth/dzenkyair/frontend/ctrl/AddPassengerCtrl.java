@@ -9,12 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-
-import java.util.logging.Level;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -57,10 +54,15 @@ public class AddPassengerCtrl implements Serializable {
     } 
 
     public String addPassanger() {
+        String regex = "^\\pL+[\\pL\\pZ\\pP]{0,}$";
+        Pattern pattern = Pattern.compile(regex);
         if(passengerBB.getFirstName().isEmpty() || passengerBB.getLastName().isEmpty() || passengerBB.getBaggage() == null) {
             passengerBB.setError("Please type in all fields");
             return "addpassenger?faces-redirect=false";
-        } else {
+        } else if(!(pattern.matcher(passengerBB.getFirstName()).find()) || !(pattern.matcher(passengerBB.getLastName()).find())) {
+            passengerBB.setError("Names can only contain letters");
+            return "addpassenger?faces-redirect=false";
+        }else {
             FacesContext context = FacesContext.getCurrentInstance();
             ExternalContext externalContext = context.getExternalContext();
             List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
