@@ -39,10 +39,12 @@ public class FlightList extends AbstractDAO<Flight, Long>
     
     @Override
     public List<Flight> getByLineAndDeparture(Line line, Calendar departure){
-        String jpql = "select f from Flight f where f.line=:line and f.departure>=:departure";
+        Status status = Status.CANCELLED;
+        String jpql = "select f from Flight f where f.line=:line and f.departure>=:departure and f.status!=:status";
         Query query = em.createQuery(jpql, Flight.class);
         query.setParameter("line", line);
         query.setParameter("departure", departure);
+        query.setParameter("status", status);
         return query.getResultList();
     }
 }

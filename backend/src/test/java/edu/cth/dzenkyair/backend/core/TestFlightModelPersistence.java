@@ -181,7 +181,7 @@ public class TestFlightModelPersistence {
         departure.set(2015, 1, 1, 14, 0);
         Calendar arrival = Calendar.getInstance();
         arrival.set(2015, 1, 1, 16, 45);
-        Flight flight = new Flight(satu, departure, arrival, 10);
+        Flight flight = new Flight(satu, departure, arrival, 10, 1000, Status.OK);
         
         // CREATE TEST
         flightModel.getFlightList().create(flight);
@@ -194,6 +194,13 @@ public class TestFlightModelPersistence {
         fs = flightModel.getFlightList().getByLine(satu);
         assertTrue(fs.size() > 0);
         
+        // UPDATE TEST
+        Flight oldFlight = flightModel.getFlightList().findAll().get(0);
+        Flight newFlight = new Flight(oldFlight.getId(), satu, departure, arrival, 50, 1000, Status.OK);
+        flightModel.getFlightList().update(newFlight);
+        int newPass = flightModel.getFlightList().findAll().get(0).getMaxPass();
+        assertTrue(newPass == newFlight.getMaxPass());
+        
         // GET BY LINE AND DEPARTURE
         departure.set(2014, 12, 12);
         fs = flightModel.getFlightList().getByLineAndDeparture(satu, departure);
@@ -201,13 +208,12 @@ public class TestFlightModelPersistence {
         departure.set(2016, 01, 01);
         fs = flightModel.getFlightList().getByLineAndDeparture(satu, departure);
         assertTrue(fs.isEmpty());
-        
-        // UPDATE TEST
-        Flight oldFlight = flightModel.getFlightList().findAll().get(0);
-        Flight newFlight = new Flight(oldFlight.getId(), satu, departure, arrival, 50);
+        oldFlight = flightModel.getFlightList().findAll().get(0);
+        newFlight = new Flight(oldFlight.getId(), satu, departure, arrival, 50, 1000, Status.CANCELLED);
         flightModel.getFlightList().update(newFlight);
-        int newPass = flightModel.getFlightList().findAll().get(0).getMaxPass();
-        assertTrue(newPass == newFlight.getMaxPass());
+        departure.set(2014, 01, 01);
+        fs = flightModel.getFlightList().getByLineAndDeparture(satu, departure);
+        assertTrue(fs.isEmpty());
         
         //DELETE TEST
         flightModel.getFlightList().delete(oldFlight.getId());
@@ -235,7 +241,7 @@ public class TestFlightModelPersistence {
         
         int maxP = 12;
         
-        Flight f = new Flight(line,dep,arr,maxP);
+        Flight f = new Flight(line,dep,arr,maxP, 1000, Status.OK);
         flightModel.getFlightList().create(f);
         User u = new User("Bakir", "Bake", Groups.USER);
         flightModel.getUserList().create(u);
@@ -272,7 +278,7 @@ public class TestFlightModelPersistence {
         arr.set(2015, 1, 1, 22, 0);
         
                
-        Flight f2 = new Flight(line2,dep2,arr2,maxP);
+        Flight f2 = new Flight(line2,dep2,arr2,maxP, 1000, Status.OK);
         flightModel.getFlightList().create(f2);
         User u2 = new User("Nick", "diaz", Groups.USER);
         flightModel.getUserList().create(u2);
@@ -316,7 +322,7 @@ public class TestFlightModelPersistence {
         departure.set(2015, 1, 1, 14, 0);
         Calendar arrival = Calendar.getInstance();
         arrival.set(2015, 1, 1, 16, 45);
-        Flight flight = new Flight(ll.get(0), departure, arrival, 10);
+        Flight flight = new Flight(ll.get(0), departure, arrival, 10, 1000, Status.OK);
         flightModel.getFlightList().create(flight);
         
         flightModel.getUserList().create(new User("user", "password", Groups.USER));

@@ -5,6 +5,7 @@ import edu.cth.dzenkyair.backend.core.Flight;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Groups;
 import edu.cth.dzenkyair.backend.core.Line;
+import edu.cth.dzenkyair.backend.core.Status;
 import edu.cth.dzenkyair.backend.core.User;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -64,7 +65,7 @@ public class DefaultData {
         departure.set(2015, 1, 1, 14, 0);
         Calendar arrival = Calendar.getInstance();
         arrival.set(2015, 1, 1, 16, 45);
-        Flight flsagbg = new Flight(sagbg, departure, arrival, 10);
+        Flight flsagbg = new Flight(sagbg, departure, arrival, 10, 100, Status.OK);
         flightModel.getFlightList().create(flsagbg);
     }
 
