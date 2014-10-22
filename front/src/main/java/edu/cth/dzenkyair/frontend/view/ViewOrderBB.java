@@ -37,13 +37,21 @@ public class ViewOrderBB implements Serializable {
     }
     
     public Flight getFlight() {
+        if(id == null)
+            return null;
         Order o = flightModel.getOrderList().find(id);
+        if(o == null)
+            return null;
         Flight f = o.getOrderFlight();
         return f;
     }
     
     public List<Passenger> getPassengers() {
+        if(id == null)
+            return null;
         Order o = flightModel.getOrderList().find(id);
+        if(o == null)
+            return null;
         List<Passenger> ps = flightModel.getPassengerList().getByOrder(o);
         return ps;
     }
