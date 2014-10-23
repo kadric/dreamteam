@@ -77,4 +77,13 @@ public class FlightSession implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+    
+    public void clearAll() {
+        line = null;
+        departure = null;
+        flight = null;
+        nPassengers = 0;
+        passengerList.clear();
+        user = null;
+    }
 }
