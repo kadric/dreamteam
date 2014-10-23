@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>Dzenky Air</title>
@@ -56,11 +57,16 @@
                                 </h:link>
                             </li>
                         </ul>
-                    <!-- No Function yet, please do not remove
-                    <h:form>
-                        <h:commandButton value="Sign in" action="buttonOne" class="btn btn-info navbar-btn navbar-right"/>
-                    </h:form>
-                    -->
+                        <c:if test="#{empty flightSession.user}">
+                            <h:link class="btn btn-info navbar-btn navbar-right" outcome="login">
+                                <span class="glyphicon glyphicon-log-in"></span> Log in
+                            </h:link>                   
+                        </c:if>
+                        <c:if test="#{not empty flightSession.user}">
+                            <h:link class="btn btn-info navbar-btn navbar-right" outcome="userpage">
+                                <span class="glyphicon glyphicon-user"></span> User page
+                            </h:link>                   
+                        </c:if>
                     </div>           
 		</div>
             </nav>
