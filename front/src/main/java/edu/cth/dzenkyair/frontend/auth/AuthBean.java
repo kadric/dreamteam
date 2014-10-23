@@ -2,6 +2,7 @@ package edu.cth.dzenkyair.frontend.auth;
 
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.User;
+import edu.cth.dzenkyair.frontend.session.FlightSession;
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,11 +30,11 @@ public class AuthBean implements Serializable {
 
     @Inject // Bad use setter or constructor injection
     private FlightModel flightModel;
+    
+    @Inject
+    private FlightSession flightSession;
 
     public String login() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-
         LOG.log(Level.INFO, "*** Try login {0} {1}", new Object[]{email, password});
         
         // Really check is there some data in database?
@@ -54,14 +55,12 @@ public class AuthBean implements Serializable {
         }
         
         LOG.log(Level.INFO, "*** Login success");
-        externalContext.getSessionMap().put("user", u);  // Store User in session
+        flightSession.setUser(u);  // Store User in session
         return "userpage?faces-redirect=true";
     }
     
     public String logout() {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().
-                getExternalContext();
-        externalContext.invalidateSession();
+        flightSession.clearAll(); // clear all; -> we leave it like this -> easier to test the system!
         LOG.log(Level.INFO, "*** Logout success");
         return "login?faces-redirect=true";
     }

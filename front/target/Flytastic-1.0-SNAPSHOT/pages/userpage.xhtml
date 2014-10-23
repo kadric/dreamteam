@@ -13,7 +13,7 @@
                 <div class="contbox">
                     <h:form>
                         <c:choose>
-                            <c:when test="${empty sessionScope.user}">
+                            <c:when test="${empty flightSession.user}">
                                 <h2>You are not online as a user so you can not view this page!</h2>
                             </c:when>
                             <c:otherwise>

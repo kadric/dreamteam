@@ -5,13 +5,12 @@ import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Order;
 import edu.cth.dzenkyair.backend.core.Passenger;
 import edu.cth.dzenkyair.backend.core.User;
+import edu.cth.dzenkyair.frontend.session.FlightSession;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 /**
@@ -26,27 +25,22 @@ public class SubmitOrder implements Serializable {
 
     @Inject // Bad use setter or constructor injection
     private FlightModel flightModel;
+    
+    @Inject
+    private FlightSession flightSession;
 
     public Flight getFlight() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-        
-        Flight f = (Flight) externalContext.getSessionMap().get("flight");
+        Flight f = flightSession.getFlight();
         return f;
     }
     
     public Collection<Passenger> getPassengerList() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-        
-        List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
+        List<Passenger> ps = flightSession.getPassengerList();
         return ps;
     }
     
     public double getFlightPrice() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-        Flight f = (Flight) externalContext.getSessionMap().get("flight");
+        Flight f = flightSession.getFlight();
         return f.getPrice();
     }
     
@@ -61,9 +55,7 @@ public class SubmitOrder implements Serializable {
     
     public double getTotalPrice() {
         double total = 0;
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-        List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
+        List<Passenger> ps = flightSession.getPassengerList();
         if(ps == null)
             return total;
         for(int i=0; i<ps.size(); i++) {
@@ -73,13 +65,10 @@ public class SubmitOrder implements Serializable {
     }
     
     public String submitOrder() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-        
         // GET FROM SESSION
-        Flight f = (Flight) externalContext.getSessionMap().get("flight");
-        List<Passenger> ps = (List<Passenger>) externalContext.getSessionMap().get("passengerList");
-        User u = (User) externalContext.getSessionMap().get("user");
+        Flight f = flightSession.getFlight();
+        List<Passenger> ps = flightSession.getPassengerList();
+        User u = flightSession.getUser();
         Order o = new Order(f, u);
         
         // STORE IN DATABASE
@@ -91,10 +80,7 @@ public class SubmitOrder implements Serializable {
         }
         
         // DELETE SESSION
-        externalContext.getSessionMap().put("line", null);
-        externalContext.getSessionMap().put("departure", null);
-        externalContext.getSessionMap().put("flight", null);
-        externalContext.getSessionMap().put("passengerList", null);
+        flightSession.clearOrder();
         return "userpage?faces-redirect=true";
     }
 

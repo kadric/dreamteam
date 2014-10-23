@@ -9,6 +9,7 @@ import edu.cth.dzenkyair.backend.core.Customer;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Groups;
 import edu.cth.dzenkyair.backend.core.User;
+import edu.cth.dzenkyair.frontend.session.FlightSession;
 import edu.cth.dzenkyair.frontend.view.RegisterBB;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,12 +34,12 @@ public class RegisterCtrl implements Serializable{
     @Inject
     private FlightModel flightModel;
     
-    private RegisterBB registerBB;
-        
-    FacesContext context = FacesContext.getCurrentInstance();
-    ExternalContext externalContext = context.getExternalContext();
+    @Inject
+    private FlightSession flightSession;
     
-     private static final Logger LOG = Logger.getLogger(RegisterCtrl.class.getSimpleName());
+    private RegisterBB registerBB;
+    
+    private static final Logger LOG = Logger.getLogger(RegisterCtrl.class.getSimpleName());
     protected RegisterCtrl(){
     
     }
@@ -84,18 +85,14 @@ public class RegisterCtrl implements Serializable{
                                         registerBB.getAdress(),registerBB.getCity(),registerBB.getPhone());
                     
                 flightModel.getUserList().create(u);
-                
                 flightModel.getCustomerList().create(c);
             
-            
+                flightSession.setUser(u);
             }
         return "submitorder?faces-redirect=true";
     }
       
     public String login() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-
         LOG.log(Level.INFO, "*** Try login {0} {1}", new Object[]{registerBB.getLoginEmail(), registerBB.getLoginPassword()});
         
         // Really check is there some data in database?
@@ -116,7 +113,7 @@ public class RegisterCtrl implements Serializable{
         }
         
         LOG.log(Level.INFO, "*** Login success");
-        externalContext.getSessionMap().put("user", u);  // Store User in session
+        flightSession.setUser(u);  // Store User in session
         return "submitorder?faces-redirect=true";
     }
     
