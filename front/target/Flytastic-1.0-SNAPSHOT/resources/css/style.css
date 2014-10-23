@@ -209,12 +209,6 @@ body{
 .navbar-brand{
 	color: white;
 }
-#bone{
-	color: white;
-        transition-property: background;
-        transition-duration: 200ms;
-        transition-timing-function: linear;
-}
 #btwo{
 	color: white;
         transition-property: background;
@@ -249,9 +243,6 @@ body{
 	background-color: #426dab;
 }
 #bthree:hover{
-	background-color: #426dab;
-}
-#bone:hover{
 	background-color: #426dab;
 }
 #hact{
