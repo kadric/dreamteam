@@ -4,6 +4,7 @@ package edu.cth.dzenkyair.frontend.ctrl;
 import edu.cth.dzenkyair.backend.core.Flight;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Line;
+import edu.cth.dzenkyair.frontend.session.FlightSession;
 import edu.cth.dzenkyair.frontend.view.SelectFlightBB;
 import java.io.Serializable;
 import java.util.Calendar;
@@ -33,9 +34,10 @@ public class SelectFlightCtrl implements Serializable {
     @Inject
     private FlightModel flightModel;
     
-    private SelectFlightBB flightBB;
+    @Inject
+    private FlightSession flightSession;
     
-    Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+    private SelectFlightBB flightBB;
     
     protected SelectFlightCtrl() {
         // Must have for CDI
@@ -52,7 +54,7 @@ public class SelectFlightCtrl implements Serializable {
             return "selectflight?faces-redirect=false";
         }
         Flight f = flightModel.getFlightList().find(flightBB.getId());
-        sessionMap.put("flight", f);
+        flightSession.setFlight(f);
         return "addpassenger?faces-redirect=true";
     }
     

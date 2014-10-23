@@ -2,12 +2,13 @@ package edu.cth.dzenkyair.frontend.ctrl;
 
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Line;
+import edu.cth.dzenkyair.frontend.session.FlightSession;
 import edu.cth.dzenkyair.frontend.view.ListAirportsBB;
 import java.io.Serializable;
 import java.util.Calendar;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,13 +18,16 @@ import javax.inject.Named;
  * @author Dženan
  */
 @Named
-@ViewScoped
+@RequestScoped
 public class ListAirportsCtrl implements Serializable {
     
     @Inject
     private FlightModel flightModel;
     
-    private ListAirportsBB airportsBB;
+    @Inject
+    private FlightSession flightSession;
+    
+    private ListAirportsBB listAirportsBB;
     
     protected ListAirportsCtrl() {
         // Must have for CDI
@@ -31,24 +35,23 @@ public class ListAirportsCtrl implements Serializable {
     
     @Inject
     public void setPassengerBB(ListAirportsBB airportsBB) {
-        this.airportsBB = airportsBB;
+        this.listAirportsBB = airportsBB;
     }
     
     public void setFromAirport(Long id) {
-        airportsBB.setFromId(id);
+        listAirportsBB.setFromId(id);
     }
     public String search() {
-        if(airportsBB.getLineId() == null) {
-            airportsBB.setError("Please select a destination");
+        if(listAirportsBB.getLineId() == null) {
+            listAirportsBB.setError("Please select a destination");
             return "index?faces-redirect=false";
         }
-        Line l = flightModel.getLineList().find(airportsBB.getLineId());
+        Line l = flightModel.getLineList().find(listAirportsBB.getLineId());
         Calendar d = Calendar.getInstance();
         d.set(2014, 01, 01);
-        FacesContext context = FacesContext.getCurrentInstance();
-        ExternalContext externalContext = context.getExternalContext();
-        externalContext.getSessionMap().put("line", l);
-        externalContext.getSessionMap().put("departure", d);
+        flightSession.setLine(l);
+        flightSession.setDeparture(d);
+
         return "pages/selectflight?faces-redirect=true";
     }
 }

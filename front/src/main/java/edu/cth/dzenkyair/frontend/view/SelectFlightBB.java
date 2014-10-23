@@ -4,6 +4,7 @@ package edu.cth.dzenkyair.frontend.view;
 import edu.cth.dzenkyair.backend.core.Flight;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Line;
+import edu.cth.dzenkyair.frontend.session.FlightSession;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
@@ -30,6 +31,9 @@ public class SelectFlightBB implements Serializable {
     @Inject
     private FlightModel flightModel;
     
+    @Inject
+    private FlightSession flightSession;
+    
     private Long id;
     private String error;
     
@@ -41,8 +45,8 @@ public class SelectFlightBB implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext externalContext = context.getExternalContext();
         
-        Line line = (Line) externalContext.getSessionMap().get("line");
-        Calendar departure = (Calendar) externalContext.getSessionMap().get("departure");
+        Line line = flightSession.getLine();
+        Calendar departure = flightSession.getDeparture();
         
         return flightModel.getFlightList().getByLineAndDeparture(line, departure);
     }
