@@ -15,13 +15,7 @@
         <ui:composition template="/WEB-INF/template2.xhtml">
             <ui:define name="tcontent"> 
                 
-                <div class="jumbotron" id="welcome">
-					
-				<div id="heyeyey">
-					<h1>Visit Europe, Fly Dzenky Air.</h1>
-				</div>
-				
-		
+                <div class="jumbotron" id="welcome" style="padding:0;">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -57,7 +51,6 @@
 				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
 					<span class="glyphicon glyphicon-chevron-right"></span>
 				</a>
-	
 				</div>	
 			</div>
                 
@@ -66,20 +59,29 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Line</th>
+                                    <th>From</th>
+                                    <th>To</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h:selectOneMenu class="form-control" value="#{listAirportsBB.lineId}">
-                                            <f:selectItem itemLabel="- Select line -" noSelectionOption="true" />
-                                            <f:selectItems value="#{listAirportsBB.lines}" var="line" 
-                                                           itemLabel="#{line.fromAirport.name} - #{line.toAirport.name}" itemValue="#{line.id}" />
+                                        <h:selectOneMenu class="form-control"  value="#{listAirportsBB.fromId}">
+                                            <p:ajax update="lineselection"/>
+                                            <f:selectItem itemLabel="- Select from -" noSelectionOption="true" />
+                                            <f:selectItems value="#{listAirportsBB.allAirport}" var="airport" 
+                                                           itemLabel="#{airport.name}" itemValue="#{airport.id}" />
                                         </h:selectOneMenu>
                                     </td>
                                     <td>
-                                        <h:commandButton value="Search" action="#{listAirportsCtrl.search()}" class="btn btn-primary"/>
+                                        <h:selectOneMenu id="lineselection" class="form-control" value="#{listAirportsBB.lineId}">
+                                            <f:selectItem itemLabel="- Select to -" noSelectionOption="true" />
+                                            <f:selectItems value="#{listAirportsBB.lines}" var="line" 
+                                                           itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
+                                        </h:selectOneMenu>
+                                    </td>
+                                    <td>
+                                        <h:commandButton value="Search" action="#{listAirportsCtrl.search}" class="btn btn-primary"/>
                                     </td>
                                 </tr>
                             </tbody>
@@ -89,7 +91,7 @@
                 </div>
                 
                 <div class="jumbotron" id="inf">
-                    <h1>Fly with Air Dzenky.</h1>	
+                    <h1>Fly with dzenkyAIR.</h1>	
                     <p id="paras">Since the beginning of Air Dzenky, We have been flying to 4 destinations. We work very hard to do our best for our customers, and we have the highest customer satisfaction rate in Europe. We are the only airline with 5 out of 5 stars! Find your flight, click the button below!</p>
                 </div>
                 

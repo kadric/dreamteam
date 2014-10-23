@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,7 +17,7 @@ import javax.inject.Named;
  * @author Dženan
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class ListAirportsBB implements Serializable {
     
     @Inject
@@ -28,20 +29,16 @@ public class ListAirportsBB implements Serializable {
     private int month;
     private int day;
     private String error;
-    
-    protected ListAirportsBB() {
-        // Must have for CDI
-    }
 
     public Collection<Airport> getAllAirport() {
         return flightModel.getAirportList().findAll();
     }
     
     public Collection<Line> getLines() {
-        /*if(fromId == null)
+        if(fromId == null)
             return new ArrayList<Line>();
-        Airport airport = flightModel.getAirportList().find(fromId);*/
-        return flightModel.getLineList().findAll();
+        Airport airport = flightModel.getAirportList().find(fromId);
+        return flightModel.getLineList().getByFromAirport(airport);
     }
     
     public Long getFromId() {
