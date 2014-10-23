@@ -56,13 +56,13 @@ public class AuthBean implements Serializable {
         
         LOG.log(Level.INFO, "*** Login success");
         flightSession.setUser(u);  // Store User in session
-        return "userpage?faces-redirect=true";
+        return "/private/user/userpage?faces-redirect=true";
     }
     
     public String logout() {
-        flightSession.clearAll(); // clear all; -> we leave it like this -> easier to test the system!
+        flightSession.setUser(null); 
         LOG.log(Level.INFO, "*** Logout success");
-        return "login?faces-redirect=true";
+        return "/pages/login?faces-redirect=true";
     }
 
     // ------------------------------
