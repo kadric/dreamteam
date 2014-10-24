@@ -84,15 +84,15 @@
                                     <td>
                                         
                                          <h:panelGrid columns="2" cellpadding="5">
-                                                <p:outputLabel for="button" value="Button:" />
-                                                         <p:calendar id="button" value="#{listAirportsBB.date}" showOn="button" />
+                                                <p:outputLabel for="date" value="Departure:" />
+                                                <p:calendar id="date" value="#{listAirportsBB.date}" pattern="dd/MM/yyyy" mindate="24/10/2014" showOn="button" />
                                                                  </h:panelGrid>
                         
                                     <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
                                             <p:panelGrid id="display" columns="2" columnClasses="label,value">
-                                                   <h:outputText value="Button:" />
+                                                   <h:outputText value="Departure:" />
                                                    <h:outputText value="#{listAirportsBB.date}">
-                                                   <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                   <f:convertDateTime pattern="dd/MM/yyyy" />
                                                    </h:outputText>
                                             </p:panelGrid>
                                     </p:dialog>

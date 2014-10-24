@@ -4,8 +4,10 @@ import edu.cth.dzenkyair.backend.core.Airport;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Line;
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import javax.enterprise.context.RequestScoped;
@@ -31,19 +33,16 @@ public class ListAirportsBB implements Serializable {
     
     private Long fromId;
     private Long lineId;
-    private int year;
-    private int month;
-    private int day;
     private Date date;
     private String error;
-
+  
     
      public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
-     
+  
     public void click() {
         RequestContext requestContext = RequestContext.getCurrentInstance();
          
@@ -78,30 +77,6 @@ public class ListAirportsBB implements Serializable {
         this.lineId = lineId;
     }
     
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-    
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-    
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -117,4 +92,5 @@ public class ListAirportsBB implements Serializable {
     public void setError(String error) {
         this.error = error;
     }
-}
+    
+  }

@@ -44,7 +44,7 @@ public class ListAirportsCtrl implements Serializable {
     public String search() {
         if(listAirportsBB.getLineId() == null || listAirportsBB.getDate() == null) {
             listAirportsBB.setError("Please fill all fields");
-            return "index?faces-redirect=false";
+            return null;
         }
         Line l = flightModel.getLineList().find(listAirportsBB.getLineId());
         Calendar d = Calendar.getInstance();
