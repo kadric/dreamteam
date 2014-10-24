@@ -125,7 +125,19 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <h:outputScript library="js" name="myjs.js" />
+    
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+         <script>
+                $(document).ready(function() {
+                $(".datepicker").datepicker({
+                showOn: "button",
+                buttonImage: "images/calendar.gif",
+                buttonImageOnly: true})
+                                         });
+        </script>
+            <h:outputScript library="js" name="myjs.js" />
+            <h:outputScript library="js" name="myjs.js" />
     </h:body>
 </html>
         

@@ -42,13 +42,13 @@ public class ListAirportsCtrl implements Serializable {
         listAirportsBB.setFromId(id);
     }
     public String search() {
-        if(listAirportsBB.getLineId() == null) {
-            listAirportsBB.setError("Please select a destination");
+        if(listAirportsBB.getLineId() == null || listAirportsBB.getDate() == null) {
+            listAirportsBB.setError("Please fill all fields");
             return "index?faces-redirect=false";
         }
         Line l = flightModel.getLineList().find(listAirportsBB.getLineId());
         Calendar d = Calendar.getInstance();
-        d.set(2014, 01, 01);
+        d.setTime(listAirportsBB.getDate());
         flightSession.setLine(l);
         flightSession.setDeparture(d);
 

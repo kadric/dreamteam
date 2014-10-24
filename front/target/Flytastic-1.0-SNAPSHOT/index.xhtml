@@ -55,7 +55,8 @@
 			</div>
                 
                 <div class="contbox">
-                    <h:form>
+                    <h:form id="form">
+                         <p:growl id="msgs" showDetail="true" />
                         <table>
                             <thead>
                                 <tr>
@@ -81,11 +82,29 @@
                                         </h:selectOneMenu>
                                     </td>
                                     <td>
+                                        
+                                         <h:panelGrid columns="2" cellpadding="5">
+                                                <p:outputLabel for="button" value="Button:" />
+                                                         <p:calendar id="button" value="#{listAirportsBB.date}" showOn="button" />
+                                                                 </h:panelGrid>
+                        
+                                    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                                            <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                                                   <h:outputText value="Button:" />
+                                                   <h:outputText value="#{listAirportsBB.date}">
+                                                   <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                   </h:outputText>
+                                            </p:panelGrid>
+                                    </p:dialog>
+                                    </td>
+                                    <td>
                                         <h:commandButton value="Search" action="#{listAirportsCtrl.search}" class="btn btn-primary"/>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                        
+                       
                     </h:form>
                     <h1><h:outputText value="#{listAirportsBB.error}" /></h1>
                 </div>
