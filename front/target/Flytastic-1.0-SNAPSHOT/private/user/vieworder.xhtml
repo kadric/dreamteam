@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- Can't use the new official namespaces, bug in Mojarra f:metadata won't work 
     xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -12,7 +13,6 @@
     --> 
 
     <h:body>
-        
         <ui:composition template="/WEB-INF/template2.xhtml">
             <ui:define name="metadata">
                 <f:metadata>
@@ -21,10 +21,16 @@
             </ui:define>
             <ui:define name="tcontent">
                 <div class="contbox">
+                    <c:if test="#{viewOrderBB.viewCheck()}">
                     <h3>View order</h3>
                     <h:form>
                         <h:panelGroup id="orderPanel" >
                             <h4>Flight</h4>
+                            <c:if test="#{not viewOrderBB.notDepartured()}">
+                                <div class="alert alert-info">
+                                    <span class="glyphicon glyphicon-time"></span> This flight has departured
+                                </div>
+                             </c:if>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -49,7 +55,7 @@
                                     <tr>
                                         <th>First name</th>
                                         <th>Last name</th>
-                                        <th>Baggage type</th>
+                                        <th colspan="2">Baggage type</th>
                                     </tr>
                                 </thead>
                                 <ui:repeat var="passenger" value="#{viewOrderBB.passengers}">
@@ -57,15 +63,20 @@
                                         <td><h:outputText value="#{passenger.firstName}" /></td>
                                         <td><h:outputText value="#{passenger.lastName}" /></td>
                                         <td><h:outputText value="#{passenger.baggage}" /></td>
+                                        <td>
+                                            <h:link class="btn btn-success" outcome="updatepassenger" rendered="#{viewOrderBB.updatableBaggage(passenger.baggage)}">
+                                                <f:param name="id" value="#{passenger.id}" />
+                                                <span class="glyphicon glyphicon-shopping-cart"></span> Upgrade
+                                            </h:link>
+                                        </td>
                                     </tr>
                                 </ui:repeat>
                             </table>
                         </h:panelGroup>
                     </h:form>
+                    </c:if>
                 </div>
             </ui:define>
-
         </ui:composition>
-        
     </h:body>
 </html>
