@@ -92,10 +92,6 @@
                 <to-view-id>/pages/footerPages/legal.xhtml</to-view-id>
             </navigation-case>
             <navigation-case>
-                <from-outcome>booking</from-outcome>
-                <to-view-id>/pages/booking.xhtml</to-view-id>
-            </navigation-case> 
-            <navigation-case>
                 <from-outcome>bfly</from-outcome>
                 <to-view-id>/pages/footerPages/bfly.xhtml</to-view-id>
             </navigation-case>
@@ -103,10 +99,6 @@
                 <from-outcome>wfly</from-outcome>
                 <to-view-id>/pages/footerPages/wfly.xhtml</to-view-id>
             </navigation-case>
-            <navigation-case>
-                <from-outcome>afly</from-outcome>
-                <to-view-id>/pages/footerPages/afly.xhtml</to-view-id>
-            </navigation-case>                  
     </navigation-rule>         
     
         
