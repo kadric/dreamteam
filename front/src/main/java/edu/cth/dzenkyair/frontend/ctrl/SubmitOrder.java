@@ -81,7 +81,7 @@ public class SubmitOrder implements Serializable {
         
         // DELETE SESSION
         flightSession.clearOrder();
-        return "userpage?faces-redirect=true";
+        return "/private/user/userpage?faces-redirect=true";
     }
 
 }
