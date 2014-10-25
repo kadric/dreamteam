@@ -38,9 +38,12 @@
                                 <p:ajax update="flightselection"/>
                             </h:inputText>
                         </h:panelGrid>
+                        <h4>By clicking on delete your will delete the order and all passengers connected to it.</h4>
                         <div class="btn-group">
                             <h:commandButton value="Update" immediate="true" class="btn btn-primary"
                                              action="#{editOrderCtrl.update()}" />
+                            <h:commandButton value="Delete" immediate="true" class="btn btn-danger"
+                                             action="#{editOrderCtrl.delete()}" />
                             <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
                                              action="#{editOrderCtrl.cancel()}" />
                         </div>
