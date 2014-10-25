@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+        <ui:composition template="/WEB-INF/template2.xhtml">
+            <ui:define name="metadata">
+                <f:metadata>
+                    <f:viewParam name="id" value="#{viewOrderBB.id}"/>
+                </f:metadata>
+            </ui:define>
+            <ui:define name="tcontent">
+                <div class="contbox">
+                    <h3>Admin center</h3>
+                    <c:if test="#{not empty adminCenterBB.error}">
+                        <div class="alert alert-danger">
+                            <span class="glyphicon glyphicon-remove"></span> <h:outputText value="#{adminCenterBB.error}" />
+                        </div>
+                    </c:if>
+                    <h4>Search order</h4>
+                    <h:form>
+                        <h:panelGrid columns="3" class="table">
+                            <h:outputLabel value="Order id" />
+                            <h:inputText id="orderselection" value="#{adminCenterBB.orderId}"  
+                                         onkeypress="if(event.which != 8  &amp;&amp; event.which &lt; 48 || event.which &gt; 57) return false;">
+                                <p:ajax update="orderselection"/>
+                            </h:inputText>
+                            <h:commandButton value="Search" immediate="true" class="btn btn-primary"
+                                             action="#{adminCenterCtrl.searchOrder()}" />
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

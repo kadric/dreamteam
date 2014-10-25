@@ -22,7 +22,7 @@
             <ui:define name="tcontent">
                 <div class="contbox">
                     <c:if test="#{viewOrderBB.viewCheck()}">
-                    <h3>View order</h3>
+                    <h3>View order - No. <h:outputText value="#{viewOrderBB.id}" /></h3>
                     <h:form>
                         <h:panelGroup id="orderPanel" >
                             <h4>Flight</h4>
@@ -74,6 +74,10 @@
                             </table>
                         </h:panelGroup>
                     </h:form>
+                    <h:link class="btn btn-primary" outcome="editorder" rendered="#{authBean.admin}">
+                        <f:param name="id" value="#{viewOrderBB.id}" />
+                        <span class="glyphicon glyphicon glyphicon-pencil"></span> Edit
+                    </h:link>
                     </c:if>
                 </div>
             </ui:define>

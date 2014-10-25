@@ -1,6 +1,7 @@
 package edu.cth.dzenkyair.frontend.auth;
 
 import edu.cth.dzenkyair.backend.core.FlightModel;
+import edu.cth.dzenkyair.backend.core.Groups;
 import edu.cth.dzenkyair.backend.core.User;
 import edu.cth.dzenkyair.frontend.session.FlightSession;
 import java.io.Serializable;
@@ -63,6 +64,11 @@ public class AuthBean implements Serializable {
         flightSession.setUser(null); 
         LOG.log(Level.INFO, "*** Logout success");
         return "/pages/login?faces-redirect=true";
+    }
+    
+    public boolean isAdmin() {
+        User u = flightSession.getUser();
+        return u.getGroups().get(0).equals(Groups.ADMIN);
     }
 
     // ------------------------------

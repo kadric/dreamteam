@@ -84,10 +84,6 @@
                 <to-view-id>/pages/footerPages/career.xhtml</to-view-id>
             </navigation-case>
             <navigation-case>
-                <from-outcome>info</from-outcome>
-                <to-view-id>/pages/info.xhtml</to-view-id>
-            </navigation-case>  
-            <navigation-case>
                 <from-outcome>legal</from-outcome>
                 <to-view-id>/pages/footerPages/legal.xhtml</to-view-id>
             </navigation-case>
@@ -98,6 +94,18 @@
             <navigation-case>
                 <from-outcome>wfly</from-outcome>
                 <to-view-id>/pages/footerPages/wfly.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>editorder</from-outcome>
+                <to-view-id>/private/admin/editorder.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>admincenter</from-outcome>
+                <to-view-id>/private/admin/admincenter.xhtml</to-view-id>
+            </navigation-case>
+            <navigation-case>
+                <from-outcome>editprofile</from-outcome>
+                <to-view-id>/pages/editprofile.xhtml</to-view-id>
             </navigation-case>
     </navigation-rule>         
     

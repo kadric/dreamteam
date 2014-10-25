@@ -29,8 +29,18 @@
                                             <h3 class="panel-title">Welcome, FirstName</h3>
                                           </div>
                                           <div class="panel-body">
-                                          <a href="editprofile.xhtml">Edit profile</a>
-                                              <br/>
+                                            <ul class="nav nav-pills nav-stacked">
+                                                  <li>
+                                                      <h:link outcome="admincenter" rendered="#{authBean.admin}">
+                                                        <span class="glyphicon glyphicon glyphicon-eye-open"></span> Admin Center
+                                                    </h:link>
+                                                  </li>
+                                                  <li>
+                                                      <h:link outcome="editprofile">
+                                                        <span class="glyphicon glyphicon glyphicon-edit"></span> Edit profile
+                                                    </h:link>
+                                                  </li>
+                                              </ul>
                                           </div>
                                         </div>
                                     </div>
