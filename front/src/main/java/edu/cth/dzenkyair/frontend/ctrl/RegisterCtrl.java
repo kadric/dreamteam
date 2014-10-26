@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -56,7 +57,12 @@ public class RegisterCtrl implements Serializable{
     }
     
     public String register(){
-   
+        String regexName = "^\\pL+[\\pL\\pZ\\pP]{0,}$";
+        Pattern patternName = Pattern.compile(regexName);
+        String regexEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern patternEmail = Pattern.compile(regexEmail);
+        
         if(registerBB.getFirstName().isEmpty() || registerBB.getLastName().isEmpty() 
                 || registerBB.getPassword().isEmpty() || registerBB.getConfirmPassword().isEmpty()
                 || registerBB.getEmail().isEmpty() || registerBB.getAdress().isEmpty()
@@ -64,8 +70,13 @@ public class RegisterCtrl implements Serializable{
             
                 registerBB.setError("Please type in all fields");
                 return "register?faces-redirect=false";
-        }
-        
+        } else if(!(patternName.matcher(registerBB.getFirstName()).find()) || !(patternName.matcher(registerBB.getLastName()).find())) {
+            registerBB.setError("Names can only contain letters");
+            return "register?faces-redirect=false";
+        } else if(!(patternEmail.matcher(registerBB.getEmail()).find())) {
+            registerBB.setError("Invalid email");
+            return "register?faces-redirect=false";
+        }      
         else if( !(registerBB.getPassword()).equals(registerBB.getConfirmPassword())){
         
                 registerBB.setError("Make sure that password is correct");
@@ -79,7 +90,7 @@ public class RegisterCtrl implements Serializable{
         }else {
             
             
-                List<Customer>cl = flightModel.getCustomerList().findAll();
+                List<Customer> cl = flightModel.getCustomerList().findAll();
                 User u = new User(registerBB.getEmail(),registerBB.getPassword(),Groups.USER);
                 Customer c = new Customer(u,registerBB.getFirstName(),registerBB.getLastName(),
                                         registerBB.getAdress(),registerBB.getCity(),registerBB.getPhone());
@@ -95,12 +106,16 @@ public class RegisterCtrl implements Serializable{
     public String login() {
         LOG.log(Level.INFO, "*** Try login {0} {1}", new Object[]{registerBB.getLoginEmail(), registerBB.getLoginPassword()});
         
+        if(registerBB.getLoginEmail().isEmpty() || registerBB.getLoginPassword().isEmpty()) {
+            registerBB.setError("Please type in a username or password");
+            return "register?faces-redirect=false";
+        }
         // Really check is there some data in database?
         List<User> us =  flightModel.getUserList().getByEmail(registerBB.getLoginEmail());
         if(us.size() <= 0) {
             LOG.log(Level.INFO, "*** Login failed");
             registerBB.setError("The username is wrong");
-            return "login?faces-redirect=false";
+            return "register?faces-redirect=false";
         }
         User u = us.get(0);
         

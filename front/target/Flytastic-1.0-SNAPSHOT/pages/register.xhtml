@@ -17,17 +17,19 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template2.xhtml">
 
             <ui:define name="tcontent">
-                
-               <div class="page-header">
+                <div class="contbox">
+                <div class="page-header">
                          <h1 id="register-header" >Please login or register to continue</h1>
                 </div>
-               
-                    
+                <c:if test="#{not empty registerBB.error}">
+                    <div class="alert alert-danger">
+                        <span class="glyphicon glyphicon-remove"></span> <h:outputText value="#{registerBB.error}" />
+                    </div>
+                </c:if>
                     <div class="container">
   
-  
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-5">
              
                                    
     
@@ -40,7 +42,7 @@ and open the template in the editor.
                                  <h:panelGrid columns="3">
                                     <h:outputLabel for="loginEmail" value="Email"/>
                                     <h:inputText class="form-control" value="#{registerBB.loginEmail}" id="loginEmail"/>
-                                    <h:message for="loginEMail" />
+                                    <h:message for="loginEmail" />
                                     <h:outputLabel for="loginPassword" value="Password"/>
                                     <h:inputSecret class="form-control" value="#{registerBB.loginPassword}" id="loginPassword"/>  
                                     <h:message for="loginPassword" />
@@ -65,7 +67,6 @@ and open the template in the editor.
                         <h:messages/>
                        
                         <h:panelGrid columns="3" cellpadding="5">
-                                <h1><h:outputText value="#{registerBB.error}" /></h1>
                                 <!--First name -->
                                 <h:outputLabel for="firstName" value="First Name"/>
                                 <h:inputText class="form-control" value="#{registerBB.firstName}" id="firstName"/>
@@ -106,7 +107,7 @@ and open the template in the editor.
                               
                    
   </div> <!-- end of main container -->
-                    
+                </div>
             </ui:define>
             
         </ui:composition>
