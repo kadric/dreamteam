@@ -5,6 +5,7 @@ import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Line;
 import edu.cth.dzenkyair.frontend.session.FlightSession;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.logging.Logger;
@@ -18,26 +19,22 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class SelectFlightBB implements Serializable {
-    
-    private static final Logger LOG = Logger.getLogger(SelectFlightBB.class.getName());
-    
+public class SearchFlightBB implements Serializable {
+        
     @Inject
     private FlightModel flightModel;
     
-    @Inject
-    private FlightSession flightSession;
-    
     private Long id;
-    private String error;
     
-    protected SelectFlightBB() {
+    protected SearchFlightBB() {
         // Must have for CDI
     }
     
     public Collection<Flight> getFlightList() {
-        Line line = flightSession.getLine();
-        Calendar departure = flightSession.getDeparture();
+        if(id == null)
+            return new ArrayList<Flight>();
+        Line line = flightModel.getLineList().find(id);
+        Calendar departure = Calendar.getInstance();
         
         return flightModel.getFlightList().getByLineAndDeparture(line, departure);
     }
@@ -48,13 +45,5 @@ public class SelectFlightBB implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-    
-    public String getError() {
-        return error;
-    }
-    
-    public void setError(String error) {
-        this.error = error;
     }
 }
