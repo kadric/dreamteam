@@ -17,6 +17,7 @@
 
             <ui:define name="tcontent">
                 <div class="contbox">
+                <c:if test="#{not empty flightSession.flight and not empty flightSession.NPassengers}">
                 <h3>Add passengers</h3>
                 <c:if test="#{addPassengerBB.error != null}">
                     <div class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span> <h:outputText value="#{addPassengerBB.error}" /></div>
@@ -50,10 +51,12 @@
                                 <td></td>
                             </tr>
                         </table>
+                        <h4>#{addPassengerCtrl.passengerList.size()} / #{flightSession.NPassengers} passengers</h4>
                         <h:commandButton class="btn btn-primary" value="Add passenger" action="#{addPassengerCtrl.addPassanger()}"  />
                         <h:commandButton class="btn btn-primary" value="Continue" action="#{addPassengerCtrl.cont()}"  />
                     </h:panelGroup>
                 </h:form>
+                </c:if>
                 </div>
             </ui:define>
         </ui:composition>

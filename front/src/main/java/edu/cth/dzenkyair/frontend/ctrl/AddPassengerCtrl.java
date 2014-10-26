@@ -56,24 +56,30 @@ public class AddPassengerCtrl implements Serializable {
         if(passengerBB.getFirstName().isEmpty() || passengerBB.getLastName().isEmpty() || passengerBB.getBaggage() == null) {
             passengerBB.setError("Please type in all fields");
             return "addpassenger?faces-redirect=false";
-        } else if(!(pattern.matcher(passengerBB.getFirstName()).find()) || !(pattern.matcher(passengerBB.getLastName()).find())) {
+        } 
+        if(!(pattern.matcher(passengerBB.getFirstName()).find()) || !(pattern.matcher(passengerBB.getLastName()).find())) {
             passengerBB.setError("Names can only contain letters");
             return "addpassenger?faces-redirect=false";
-        }else {
-            List<Passenger> ps = flightSession.getPassengerList();
-            if(ps == null) {
-                Passenger p = new Passenger(null, null, passengerBB.getFirstName(), 
-                        passengerBB.getLastName(), passengerBB.getBaggage());
-                ps = new ArrayList<Passenger>();
-                ps.add(p);
-                flightSession.setPassengerList(ps);
-            } else {
-                Passenger p = new Passenger(null, null, passengerBB.getFirstName(), 
-                        passengerBB.getLastName(), passengerBB.getBaggage());
-                ps.add(p);
-                flightSession.setPassengerList(ps);
-            }   
+        } 
+        if(flightSession.getPassengerList() == null) {
+            ; //Do nothing
+        } else if(flightSession.getPassengerList().size() >= flightSession.getNPassengers()) {
+            passengerBB.setError("You can not add more passengers");
+            return "addpassenger?faces-redirect=false";
         }
+        List<Passenger> ps = flightSession.getPassengerList();
+        if(ps == null) {
+            Passenger p = new Passenger(null, null, passengerBB.getFirstName(), 
+                    passengerBB.getLastName(), passengerBB.getBaggage());
+            ps = new ArrayList<Passenger>();
+            ps.add(p);
+            flightSession.setPassengerList(ps);
+        } else {
+            Passenger p = new Passenger(null, null, passengerBB.getFirstName(), 
+                    passengerBB.getLastName(), passengerBB.getBaggage());
+            ps.add(p);
+            flightSession.setPassengerList(ps);
+        }   
         return "addpassenger?faces-redirect=true";
     }
     
@@ -81,7 +87,10 @@ public class AddPassengerCtrl implements Serializable {
         List<Passenger> pl = flightSession.getPassengerList();
         if(pl == null){
             passengerBB.setError("Please add passenger(s)");
-        return "addpassenger?faces-redirect=false";
+            return "addpassenger?faces-redirect=false";
+        } else if(pl.size() != flightSession.getNPassengers()) {
+            passengerBB.setError("You need to add more passengers");
+            return "addpassenger?faces-redirect=false";
         }else{
             if(flightSession.getUser() == null){
                 return "register?faces-redirect=true";

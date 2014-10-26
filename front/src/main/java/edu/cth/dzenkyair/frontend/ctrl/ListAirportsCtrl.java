@@ -50,6 +50,7 @@ public class ListAirportsCtrl implements Serializable {
         Line l = flightModel.getLineList().find(listAirportsBB.getLineId());
         Calendar d = Calendar.getInstance();
         d.setTime(listAirportsBB.getDate());
+        flightSession.clearOrder();
         flightSession.setLine(l);
         flightSession.setDeparture(d);
         flightSession.setNPassengers(listAirportsBB.getNPassengers());
