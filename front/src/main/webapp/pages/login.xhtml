@@ -3,13 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title></title>
     </h:head>
     <h:body>
         <ui:composition template="/WEB-INF/template2.xhtml">
             <ui:define name="tcontent">
+                <c:if test="#{empty flightSession.user}">
                 <div class="login panel panel-default">
                     <h:form id="login-form">
                         <h:messages/>
@@ -19,7 +21,11 @@
                         </div>
                         
                     </div>
-                <br/><br/>
+                   <c:if test="#{not empty authBean.error}">
+                        <div class="alert alert-danger">
+                            <span class="glyphicon glyphicon-remove"></span> <h:outputText value="#{authBean.error}" />
+                        </div>
+                    </c:if>
                     <div class="row">
                         <div class="col-md-2">
                             <h:outputLabel for="email" value="Email"/>
@@ -27,7 +33,7 @@
                         
                         <div class="col-md-9">
                             <h:inputText class="form-control" value="#{authBean.email}" id="email"/>
-                            <h:message for="id" />
+                            <h:message for="email" />
                         </div>
                         
                     </div>
@@ -56,8 +62,8 @@
                 </div>
                             
                     </h:form>
-                    <h1><h:outputText value="#{authBean.error}" /></h1>
                 </div>
+                </c:if>
             </ui:define>
         </ui:composition>
     </h:body>

@@ -1,4 +1,3 @@
-
 package edu.cth.dzenkyair.frontend.view;
 
 import edu.cth.dzenkyair.backend.core.Flight;
@@ -11,10 +10,8 @@ import edu.cth.dzenkyair.frontend.session.FlightSession;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,7 +20,7 @@ import javax.inject.Named;
  * @author Dženan
  */
 @Named
-@ViewScoped
+@RequestScoped
 public class ViewOrderBB implements Serializable {
     
     private static final Logger LOG = Logger.getLogger(ViewOrderBB.class.getName());

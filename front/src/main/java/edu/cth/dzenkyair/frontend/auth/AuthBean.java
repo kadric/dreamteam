@@ -6,12 +6,9 @@ import edu.cth.dzenkyair.backend.core.User;
 import edu.cth.dzenkyair.frontend.session.FlightSession;
 import java.io.Serializable;
 import java.util.List;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 /**
@@ -38,6 +35,10 @@ public class AuthBean implements Serializable {
     public String login() {
         LOG.log(Level.INFO, "*** Try login {0} {1}", new Object[]{email, password});
         
+        if(email.isEmpty() || password.isEmpty()) {
+            error = "Please type in a username or password";
+            return "login?faces-redirect=false";
+        }
         // Really check is there some data in database?
         List<User> us =  flightModel.getUserList().getByEmail(email);
         if(us.size() <= 0) {

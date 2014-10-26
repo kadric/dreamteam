@@ -21,15 +21,15 @@
                     </c:if>
                     <h:form id="login-form">
                         <h:panelGrid columns="2">
-                            <h:outputLabel for="firstname" value="First name"/>
+                            <h:outputLabel for="firstname" value="First name" class="control-label col-xs-2"/>
                             <h:inputText class="form-control" value="#{editContactInfoBB.firstName}" id="firstname"/>
-                            <h:outputLabel for="lastname" value="Last name"/>
+                            <h:outputLabel for="lastname" value="Last name" class="control-label col-xs-2"/>
                             <h:inputText class="form-control" value="#{editContactInfoBB.lastName}" id="lastname"/>
-                            <h:outputLabel for="adress" value="Adress"/>
+                            <h:outputLabel for="adress" value="Adress" class="control-label col-xs-2"/>
                             <h:inputText class="form-control" value="#{editContactInfoBB.adress}" id="adress"/>
-                            <h:outputLabel for="city" value="City"/>
+                            <h:outputLabel for="city" value="City" class="control-label col-xs-2"/>
                             <h:inputText class="form-control" value="#{editContactInfoBB.city}" id="city"/>
-                            <h:outputLabel for="phone" value="Phone"/>
+                            <h:outputLabel for="phone" value="Phone" class="control-label col-xs-2"/>
                             <h:inputText class="form-control" value="#{editContactInfoBB.phone}" id="phone"
                                          onkeypress="if(event.which != 8  &amp;&amp; event.which &lt; 48 || event.which &gt; 57) return false;"/>
                         </h:panelGrid>
