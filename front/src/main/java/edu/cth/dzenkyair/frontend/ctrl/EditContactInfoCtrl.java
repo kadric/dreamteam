@@ -14,7 +14,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author matej
+ * @author Dženan
  */
 @Named
 @RequestScoped
