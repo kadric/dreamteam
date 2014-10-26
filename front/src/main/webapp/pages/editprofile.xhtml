@@ -10,34 +10,96 @@
     <h:body>
         <ui:composition template="/WEB-INF/template2.xhtml">
             <ui:define name="tcontent">
-                <div class="contbox">
+                <div class="contbox panel panel-default">
                     <h2>Edit profile</h2>
                     <h:form id="login-form">
                         <h:messages/>
-                        <h3>Change email</h3>
-                        <h:panelGrid columns="2">
-                            <h:outputLabel for="email" value="Email"/>
-                            <h:inputText class="form-control" value="#{editProfileBB.email}" id="email"/>
-                            <h:message for="email" />
-                            
-                        </h:panelGrid>
+                        
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h3>Change email</h3>
+                                <h2><h:outputText value="#{editProfileBB.error}" /></h2>
+                            </div>
+                        </div>
                         <br/>
-                        <h:commandButton class="btn btn-primary" id="editEmail" value="Change email" action="#{editProfileCtrl.editEmail}"/> 
-                        <h3>Change password</h3>
-                         <h2><h:outputText value="#{editProfileBB.error}" /></h2>
-                        <h:panelGrid columns="3">
-                            <h:outputLabel for="oldPassword" value="Old password"/>
-                            <h:inputSecret class="form-control" value="#{editProfileBB.oldPassword}" id="oldPassword"/>
-                            <h:message for="oldPassword" />
-                            <h:outputLabel for="newPassword" value="New password"/>
-                            <h:inputSecret class="form-control" value="#{editProfileBB.newPassword}" id="newPassword"/>  
-                            <h:message for="newPassword" /> 
-                            <h:outputLabel for="confNewPassword" value="Confirm new password"/>
-                            <h:inputSecret class="form-control" value="#{editProfileBB.confNewPassword}" id="confNewPassword"/>  
-                            <h:message for="confNewPassword" /> 
-                        </h:panelGrid>
+                        
+                        <div class="row">
+                            <div class="col-md-1">
+                                <h:outputLabel for="email" value="Email"/>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                 <h:inputText class="form-control" value="#{editProfileBB.email}" id="email"/>
+                                 <h:message for="email" />
+                            </div>
+                        
+                                             
+                     
+                        
+                   
+                            <div class="col-md-4">
+                                <div >
+                                    <h:commandButton class="btn btn-primary" id="editEmail" value="Change email" action="#{editProfileCtrl.editEmail}"/> 
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <br/><br/>
+                        
+                        <div class="row">
+                            <div class="col-md-3">
+                                  <h3>Change password</h3>
+                                  <h2><h:outputText value="#{editProfileBB.error}" /></h2>
+                            </div>
+                        </div>
+                      
+                        <div class="row">
+                            <div class="col-md-2">
+                                 <h:outputLabel for="oldPassword" value="Old password"/>
+                            </div>
+                            
+                            
+                            <div class="col-md-3">
+                                <h:inputSecret class="form-control" value="#{editProfileBB.oldPassword}" id="oldPassword"/>
+                                 <h:message for="oldPassword" />
+                            </div>
+                            
+                        </div>
                          <br/>
-                        <h:commandButton class="btn btn-primary" id="button" value="Change password" action="#{editProfileCtrl.editPassword}"/> 
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h:outputLabel for="newPassword" value="New password"/>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                 <h:inputSecret class="form-control" value="#{editProfileBB.newPassword}" id="newPassword"/>  
+                                 <h:message for="newPassword" /> 
+                            </div>
+                            
+                        </div>
+                         <br/>
+                         
+                         <div class="row">
+                             <div class ="col-md-2">
+                                 <h:outputLabel for="confNewPassword" value="Confirm new password"/>
+                             </div>
+                             
+                             <div class="col-md-3">
+                                 <h:inputSecret class="form-control" value="#{editProfileBB.confNewPassword}" id="confNewPassword"/>  
+                                 <h:message for="confNewPassword" /> 
+                             </div>
+                             
+                         </div>
+                         <br/> <br/>
+                         <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                     <h:commandButton class="btn btn-primary" id="button" value="Change password" action="#{editProfileCtrl.editPassword}"/> 
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
                     </h:form>
                     <br/>
                     
