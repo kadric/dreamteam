@@ -26,7 +26,7 @@ import org.junit.runner.RunWith;
  * NOTE NOTE NOTE: JavaDB (Derby) must be running (not using an embedded
  * database) GlassFish not needed using embedded
  *
- * @author Dženan
+ * @author Dženan and Matej
  */
 @RunWith(Arquillian.class)
 public class TestFlightModelPersistence {
@@ -213,6 +213,15 @@ public class TestFlightModelPersistence {
         flightModel.getFlightList().update(newFlight);
         departure.set(2014, 01, 01);
         fs = flightModel.getFlightList().getByLineAndDeparture(satu, departure);
+        assertTrue(fs.isEmpty());
+        
+        // GET BY LINE AND DEPARTURE AND MAXPASS
+        oldFlight = flightModel.getFlightList().findAll().get(0);
+        newFlight = new Flight(oldFlight.getId(), oldFlight.getLine(), oldFlight.getDeparture(), oldFlight.getDeparture(), 50, 1000, Status.OK);
+        flightModel.getFlightList().update(newFlight);
+        fs = flightModel.getFlightList().getByLineDeparturePassenger(satu, departure, 30);
+        assertTrue(fs.size() > 0);
+        fs = flightModel.getFlightList().getByLineDeparturePassenger(satu, departure, 100);
         assertTrue(fs.isEmpty());
         
         //DELETE TEST

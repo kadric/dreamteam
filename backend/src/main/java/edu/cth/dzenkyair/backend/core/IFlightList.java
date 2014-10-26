@@ -16,5 +16,7 @@ public interface IFlightList extends IDAO<Flight, Long> {
     public List<Flight> getByLine(Line line);
     
     public List<Flight> getByLineAndDeparture(Line line, Calendar departure);
+    
+    public List<Flight> getByLineDeparturePassenger(Line line, Calendar departure, int maxPass);
      
 }
