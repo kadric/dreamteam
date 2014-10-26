@@ -27,7 +27,7 @@
                     
                     
                     <h:form>
-                    
+                        <br/>
                         <div class="row">
                             <div class="col-md-1">
                             <h:outputLabel value="Flight Id   "/>
@@ -35,11 +35,12 @@
                             </div>
                             <div class="col-md-3">
                                 
-                                <h:inputText value="#{editFlightBB.id}" style="width: 200px" readonly="true"/>
+                                <p:inputText value="#{editFlightBB.id}" style="width: 200px" readonly="true"/>
                             </div>
                             
                         </div>
                       
+                         <br/>
                         <div class="row">
                             <div class="col-md-1">
                                 <p:outputLabel for="departure" value="Departure:"  />
@@ -62,16 +63,22 @@
                             </div>
                             
                         </div>
-                        
-                        
-                        <h:panelGrid columns="3">      
+                         <br/>
+                        <div class="row">
+                            <div class="col-md-1">
+                                 <p:outputLabel for="arrival" value="Arrival:" />
+                            </div>
                             
-                              <p:outputLabel for="arrival" value="Arrival:" />
+                            <div class="col-md-3">
+                                
                               <p:calendar id="arrival" value="#{editFlightBB.arrival}" pattern="dd/MM/yyyy" showOn="button">
                                    <p:ajax event="dateSelect" listener="#{editFlightBB.onDateSelect}" update="arrival"/>
                               </p:calendar>
-                              
-                               <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                            </div>
+                            
+                            <div clas="col-md-3">
+                                
+                                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
                                             <p:panelGrid id="display1" columns="2" columnClasses="label,value">
                                                    <h:outputText value="Arrival:" />
                                                    <h:outputText value="#{editFlightBB.arrival}">
@@ -79,28 +86,51 @@
                                                    </h:outputText>
                                             </p:panelGrid>
                                     </p:dialog>
-                              </h:panelGrid>
-                        
-                        <h:panelGrid columns="2">
-                               <p:outputLabel for="status" value="Flight status: " />
+                            </div>
+                             <br/>
+                        </div>
+                        <br/>
+                         <div class="row">
+                             <div class="col-md-1">
+                             
+                                 <p:outputLabel for="status" value="Status: " />
+                             </div>
+                             
+                             <div class="col-md-3">
+                                 
+                                 
                                              <h:selectOneMenu id="status" style="width: 170px" class="form-control"  value="#{editFlightBB.status}">
                                                  <p:ajax update="status"/>     
                                             <f:selectItem itemLabel="- Select status -" noSelectionOption="true" />
                                             <f:selectItems value="#{editFlightBB.allStatus}" var="stat" 
                                                            itemLabel="#{stat}" itemValue="#{stat}" />
                                              </h:selectOneMenu>
-                                                 </h:panelGrid>
-   
-                        <div class="btn-group">
-                           
-                            <h:commandButton value="Update" immediate="true" class="btn btn-primary"
-                                             action="#{editFlightCtrl.update()}" />
+                                                
+                             </div>
+                             
+                         </div>
+                        <br/><br/>
+                       
+                               
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="btn-group pull-right">
+
+                                    <h:commandButton value="Update" immediate="true" class="btn btn-primary"
+                                                     action="#{editFlightCtrl.update()}" />
+
+                                    <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
+                                                     action="#{editFlightCtrl.cancel()}" />
+                                 </div>
+                                
+                            </div>
                             
-                            <h:commandButton value="Cancel" immediate="true" class="btn btn-default"
-                                             action="#{editFlightCtrl.cancel()}" />
                         </div>
+                        
+                        
                     </h:form>
                 </div>
+                <br/>
             </ui:define>
         </ui:composition>
     </h:body>
