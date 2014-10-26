@@ -9,6 +9,7 @@
         <ui:composition template="/WEB-INF/template2.xhtml">
             <ui:define name="tcontent">
                 <div class="contbox">
+                    <c:if test="#{not empty flightSession.NPassengers and not empty flightSession.line and not empty flightSession.departure}">
                     <h3>Select flight</h3>
                     <c:if test="#{selectFlightBB.error != null}">
                         <div class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span> <h:outputText value="#{selectFlightBB.error}" /></div>
@@ -42,6 +43,7 @@
                             <h:commandButton class="btn btn-primary" value="Select flight" action="#{selectFlightCtrl.select()}"  />
                         </h:panelGroup>
                     </h:form>
+                    </c:if>
                 </div>
             </ui:define>
         </ui:composition>

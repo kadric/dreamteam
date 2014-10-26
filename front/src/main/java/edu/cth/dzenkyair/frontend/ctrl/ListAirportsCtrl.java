@@ -42,7 +42,8 @@ public class ListAirportsCtrl implements Serializable {
         listAirportsBB.setFromId(id);
     }
     public String search() {
-        if(listAirportsBB.getLineId() == null || listAirportsBB.getDate() == null) {
+        if(listAirportsBB.getLineId() == null || listAirportsBB.getDate() == null 
+                || listAirportsBB.getNPassengers() <= 0) {
             listAirportsBB.setError("Please fill all fields");
             return null;
         }
@@ -51,6 +52,7 @@ public class ListAirportsCtrl implements Serializable {
         d.setTime(listAirportsBB.getDate());
         flightSession.setLine(l);
         flightSession.setDeparture(d);
+        flightSession.setNPassengers(listAirportsBB.getNPassengers());
 
         return "pages/selectflight?faces-redirect=true";
     }

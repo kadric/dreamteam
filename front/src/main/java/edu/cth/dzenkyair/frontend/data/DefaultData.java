@@ -1,6 +1,7 @@
 package edu.cth.dzenkyair.frontend.data;
 
 import edu.cth.dzenkyair.backend.core.Airport;
+import edu.cth.dzenkyair.backend.core.Customer;
 import edu.cth.dzenkyair.backend.core.Flight;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Groups;
@@ -52,6 +53,9 @@ public class DefaultData {
         flightModel.getUserList().create(u);
         u = new User("admin@admin.admin", "admin", Groups.ADMIN);
         flightModel.getUserList().create(u);
+        
+        Long phone = (long) 387;
+        Customer c = new Customer(u, "Firtynamy", "Lastyname", "Adressy", "Citky", phone);
         
         Airport sarajevo = new Airport("Sarajevo");
         Airport goteborg = new Airport("Göteborg");

@@ -38,8 +38,9 @@ public class SelectFlightBB implements Serializable {
     public Collection<Flight> getFlightList() {
         Line line = flightSession.getLine();
         Calendar departure = flightSession.getDeparture();
+        int nPassengers = flightSession.getNPassengers();
         
-        return flightModel.getFlightList().getByLineAndDeparture(line, departure);
+        return flightModel.getFlightList().getByLineDeparturePassenger(line, departure, nPassengers);
     }
 
     public Long getId() {

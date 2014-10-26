@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -34,6 +35,7 @@ public class ListAirportsBB implements Serializable {
     private Long fromId;
     private Long lineId;
     private Date date;
+    private int nPassengers;
     private String error;
   
     
@@ -61,6 +63,16 @@ public class ListAirportsBB implements Serializable {
         return flightModel.getLineList().getByFromAirport(airport);
     }
     
+    public Collection<Integer> getNPassengersList() {
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        return list;
+    }
+    
     public Long getFromId() {
         return fromId;
     }
@@ -85,6 +97,12 @@ public class ListAirportsBB implements Serializable {
         this.date = date;
     }
     
+    public int getNPassengers() {
+        return nPassengers;
+    }
+    public void setNPassengers(int nPassengers) {
+        this.nPassengers = nPassengers;
+    }
     
     public String getError() {
         return error;
