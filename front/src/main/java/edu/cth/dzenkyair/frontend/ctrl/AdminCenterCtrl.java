@@ -39,4 +39,14 @@ public class AdminCenterCtrl implements Serializable {
         }
         return "/private/user/vieworder?faces-redirect=true&id="+id;
     }
+    
+    public String searchFlight() {
+        Long id = adminCenterBB.getLineId();
+        if(id == null) {
+            adminCenterBB.setError("Please select from and to airport");
+            return null;
+        }
+
+        return "/private/admin/searchflight?faces-redirect=true&id="+id;
+    }
 }

@@ -32,6 +32,7 @@
                                         <th>To</th>
                                         <th>Departure</th>
                                         <th>Arrival</th>
+                                        <th>Seats left</th>
                                         <th colspan="2">Status</th>
                                     </tr>
                                 </thead>
@@ -42,6 +43,7 @@
                                         <td><h:outputText value="#{flight.line.toAirport.name}" /></td>
                                         <td><h:outputText value="#{flight.departure.time}" /></td>
                                         <td><h:outputText value="#{flight.arrival.time}" /></td>
+                                        <td><h:outputText value="#{flight.maxPass}" /></td>
                                         <td><h:outputText value="#{flight.status}" /></td>
                                         <td>
                                             <h:link class="btn btn-primary" outcome="editflight">

@@ -34,6 +34,37 @@
                                              action="#{adminCenterCtrl.searchOrder()}" />
                         </h:panelGrid>
                     </h:form>
+                    <h4>Search flight</h4>
+                    <h:form>
+                        <table class="table">
+                            <thead><tr>
+                                <th>From</th>
+                                <th colspan="2">To</th>
+                            </tr></thead>
+                            <tr>
+                                <td>
+                                    <h:selectOneMenu class="form-control"  value="#{adminCenterBB.fromAirportId}">
+                                        <p:ajax update="lineselection"/>
+                                        <f:selectItem itemLabel="- Select from -" noSelectionOption="true" />
+                                        <f:selectItems value="#{adminCenterBB.allAirport}" var="airport" 
+                                                       itemLabel="#{airport.name}" itemValue="#{airport.id}" />
+                                    </h:selectOneMenu>
+                                </td>
+                                <td>
+                                    <h:selectOneMenu id="lineselection" class="form-control" value="#{adminCenterBB.lineId}">
+                                        <p:ajax update="lineselection"/>
+                                        <f:selectItem itemLabel="- Select to -" noSelectionOption="true" />
+                                        <f:selectItems value="#{adminCenterBB.lines}" var="line" 
+                                                       itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
+                                    </h:selectOneMenu>
+                                </td>
+                                <td>
+                                    <h:commandButton value="Search" immediate="true" class="btn btn-primary"
+                                                     action="#{adminCenterCtrl.searchFlight()}" />
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
                 </div>
             </ui:define>
         </ui:composition>
