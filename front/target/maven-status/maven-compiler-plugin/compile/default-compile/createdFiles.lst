@@ -1,5 +1,5 @@
-edu\cth\dzenkyair\frontend\ctrl\SubmitOrder.class
 edu\cth\dzenkyair\frontend\view\UpdatePassengerBB.class
+edu\cth\dzenkyair\frontend\ctrl\SubmitOrder.class
 edu\cth\dzenkyair\frontend\auth\AuthBean.class
 edu\cth\dzenkyair\frontend\ctrl\RegisterCtrl.class
 edu\cth\dzenkyair\frontend\ctrl\ListAirportsCtrl.class

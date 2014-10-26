@@ -30,17 +30,24 @@
                                           </div>
                                           <div class="panel-body">
                                             <ul class="nav nav-pills nav-stacked">
-                                                  <li>
-                                                      <h:link outcome="admincenter" rendered="#{authBean.admin}">
+                                                <li>
+                                                    <h:link outcome="admincenter" rendered="#{authBean.admin}">
                                                         <span class="glyphicon glyphicon glyphicon-eye-open"></span> Admin Center
                                                     </h:link>
-                                                  </li>
-                                                  <li>
-                                                      <h:link outcome="editprofile">
-                                                        <span class="glyphicon glyphicon glyphicon-edit"></span> Edit profile
+                                                </li>
+                                                <li>
+                                                    <h:link outcome="editprofile">
+                                                        <span class="glyphicon glyphicon glyphicon-wrench"></span> Edit profile
                                                     </h:link>
-                                                  </li>
-                                              </ul>
+                                                </li>
+                                                <c:if test="#{not authBean.admin}">
+                                                <li>
+                                                    <h:link outcome="editcontactinfo">
+                                                        <span class="glyphicon glyphicon glyphicon-edit"></span> Edit contact info
+                                                    </h:link>
+                                                </li>
+                                                </c:if>
+                                            </ul>
                                           </div>
                                         </div>
                                     </div>
