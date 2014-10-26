@@ -77,53 +77,55 @@
                                     
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-2">
-                                         <h:selectOneMenu class="form-control"  value="#{listAirportsBB.fromId}">
-                                            <p:ajax update="lineselection"/>
-                                            <f:selectItem itemLabel="- Select from -" noSelectionOption="true" />
-                                            <f:selectItems value="#{listAirportsBB.allAirport}" var="airport" 
-                                                           itemLabel="#{airport.name}" itemValue="#{airport.id}" />
-                                        </h:selectOneMenu>
-                                        
-                                    </div>
-                                    <div class="col-md-2">
-                                        
-                                          <h:selectOneMenu id="lineselection" class="form-control" value="#{listAirportsBB.lineId}">
-                                            <f:selectItem itemLabel="- Select to -" noSelectionOption="true" />
-                                            <f:selectItems value="#{listAirportsBB.lines}" var="line" 
-                                                           itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
-                                        </h:selectOneMenu>
-                                  
-                                    </div>
-                                    <div class="col-md-3">
-                                        
-                                         <h:panelGrid columns="2" >
-                                                <p:outputLabel for="date" />
-                                                <p:calendar id="date" value="#{listAirportsBB.date}" pattern="dd/MM/yyyy" mindate="24/10/2014" showOn="button" />
-                                                                 </h:panelGrid>
-                        
-                                    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-                                            <p:panelGrid id="display" columns="2" columnClasses="label,value">
-                                                   <h:outputText value="Departure:" />
-                                                   <h:outputText value="#{listAirportsBB.date}">
-                                                   <f:convertDateTime pattern="dd/MM/yyyy" />
-                                                   </h:outputText>
-                                            </p:panelGrid>
-                                    </p:dialog>
+                                        <div class="col-md-2">
+                                             <h:selectOneMenu class="form-control"  value="#{listAirportsBB.fromId}">
+                                                <p:ajax update="lineselection"/>
+                                                <f:selectItem itemLabel="- Select from -" noSelectionOption="true" />
+                                                <f:selectItems value="#{listAirportsBB.allAirport}" var="airport" 
+                                                               itemLabel="#{airport.name}" itemValue="#{airport.id}" />
+                                            </h:selectOneMenu>
+
                                         </div>
+                                        <div class="col-md-2">
+
+                                              <h:selectOneMenu id="lineselection" class="form-control" value="#{listAirportsBB.lineId}">
+                                                <f:selectItem itemLabel="- Select to -" noSelectionOption="true" />
+                                                <f:selectItems value="#{listAirportsBB.lines}" var="line" 
+                                                               itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
+                                            </h:selectOneMenu>
+
+                                        </div>
+
+
+                                        <div class="col-md-4">
+
+                                             <h:panelGrid columns="3" >
+                                                    <p:outputLabel for="date" />
+                                                    <p:calendar id="date" value="#{listAirportsBB.date}" pattern="dd/MM/yyyy" mindate="24/10/2014" showOn="button" />
+                                             </h:panelGrid>
+
+                                            <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                                                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                                                       <h:outputText value="Departure:" />
+                                                       <h:outputText value="#{listAirportsBB.date}">
+                                                       <f:convertDateTime pattern="dd/MM/yyyy" />
+                                                       </h:outputText>
+                                                </p:panelGrid>
+                                            </p:dialog>
+                                    </div>
                                     
                                                                                               
-                                <div id="searchButton" class="col-md-2 pull-left" >
-                                            <h:commandButton value="Search" action="#{listAirportsCtrl.search}" class="btn btn-primary pull-right"/>
-                                        </div>
+                                    <div id="searchButton" class="col-md-2 pull-left" >
+                                         <h:commandButton value="Search" action="#{listAirportsCtrl.search}" class="btn btn-primary pull-right"/>
+                                    </div>
                                     
-                                  </div>
+                                </div>
                                     
                            
                                 <br/>
                                 
                                </h:form> 
-                                </div>
+                    </div>
                     
                     <h1><h:outputText value="#{listAirportsBB.error}" /></h1>
              
