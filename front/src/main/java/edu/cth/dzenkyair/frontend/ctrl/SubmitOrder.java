@@ -65,11 +65,22 @@ public class SubmitOrder implements Serializable {
     }
     
     public String submitOrder() {
+        
         // GET FROM SESSION
         Flight f = flightSession.getFlight();
         List<Passenger> ps = flightSession.getPassengerList();
         User u = flightSession.getUser();
         Order o = new Order(f, u);
+        int newMaxPass = f.getMaxPass() - ps.size();
+        Flight newf = new Flight(f.getId(), f.getLine(), f.getDeparture(), 
+                f.getArrival(), newMaxPass, f.getPrice(), f.getStatus());
+        
+        // CHECK CONCURRENCY
+        Flight fc = flightModel.getFlightList().find(f.getId());
+        if(fc.getMaxPass() != f.getMaxPass()) {
+            flightSession.clearOrder();
+            return "/index?faces-redirect=true";
+        }
         
         // STORE IN DATABASE
         flightModel.getOrderList().create(o);
@@ -78,6 +89,7 @@ public class SubmitOrder implements Serializable {
             p = new Passenger(p.getId(), f, o, p.getFirstName(), p.getLastName(), p.getBaggage());
             flightModel.getPassengerList().create(p);
         }
+        flightModel.getFlightList().update(newf);
         
         // DELETE SESSION
         flightSession.clearOrder();

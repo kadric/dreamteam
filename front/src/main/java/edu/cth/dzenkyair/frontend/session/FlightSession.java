@@ -92,6 +92,6 @@ public class FlightSession implements Serializable {
         departure = null;
         flight = null;
         nPassengers = 0;
-        passengerList.clear();
+        passengerList = null;
     }
 }
