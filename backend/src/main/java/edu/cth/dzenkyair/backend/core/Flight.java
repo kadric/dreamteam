@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 @Table(name="FLIGHTS")
 public class Flight extends AbstractEntity {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Line line;
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar departure;

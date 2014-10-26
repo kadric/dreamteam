@@ -6,6 +6,7 @@
 package edu.cth.dzenkyair.backend.core;
 
 import edu.cth.dzenkyair.backend.util.AbstractEntity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 @Table(name="CUSTOMERS")
 public class Customer extends AbstractEntity{
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private User user;
     @Column(nullable = false)
     private String firstName;

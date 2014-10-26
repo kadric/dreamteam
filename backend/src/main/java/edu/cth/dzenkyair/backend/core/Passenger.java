@@ -15,9 +15,9 @@ import javax.persistence.Table;
 @Table(name="PASSENGERS")
 public class Passenger extends AbstractEntity {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Flight flight;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Order order;
     @Column(nullable = false)
     private String firstName;
