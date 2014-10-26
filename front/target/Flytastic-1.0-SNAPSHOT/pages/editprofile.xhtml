@@ -14,6 +14,15 @@
                     <h2>Edit profile</h2>
                     <h:form id="login-form">
                         <h:messages/>
+                        <h3>Change email</h3>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel for="email" value="Email"/>
+                            <h:inputText class="form-control" value="#{editProfileBB.email}" id="email"/>
+                            <h:message for="email" />
+                            
+                        </h:panelGrid>
+                        <br/>
+                        <h:commandButton class="btn btn-primary" id="editEmail" value="Change email" action="#{editProfileCtrl.editEmail}"/> 
                         <h3>Change password</h3>
                          <h2><h:outputText value="#{editProfileBB.error}" /></h2>
                         <h:panelGrid columns="3">
@@ -27,7 +36,8 @@
                             <h:inputSecret class="form-control" value="#{editProfileBB.confNewPassword}" id="confNewPassword"/>  
                             <h:message for="confNewPassword" /> 
                         </h:panelGrid>
-                        <h:commandButton class="btn btn-primary" id="button" value="Apply" action="#{editProfileCtrl.apply}"/> 
+                         <br/>
+                        <h:commandButton class="btn btn-primary" id="button" value="Change password" action="#{editProfileCtrl.editPassword}"/> 
                     </h:form>
                     <br/>
                     

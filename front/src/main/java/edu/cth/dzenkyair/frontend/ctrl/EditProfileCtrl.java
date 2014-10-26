@@ -8,6 +8,7 @@ package edu.cth.dzenkyair.frontend.ctrl;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Groups;
 import edu.cth.dzenkyair.backend.core.User;
+import edu.cth.dzenkyair.frontend.session.FlightSession;
 import edu.cth.dzenkyair.frontend.view.EditProfileBB;
 import java.io.Serializable;
 import java.util.List;
@@ -28,6 +29,9 @@ public class EditProfileCtrl implements Serializable{
     @Inject
     private FlightModel flightModel;
     
+    @Inject
+    private FlightSession flightSession;
+    
     private EditProfileBB profileBB;
     
     FacesContext context = FacesContext.getCurrentInstance();
@@ -43,9 +47,22 @@ public class EditProfileCtrl implements Serializable{
         this.profileBB = profileBB;
     } 
     
-    public String apply(){
+    public String editEmail(){
+    User u = (User) flightSession.getUser();
+    String email = u.getEmail();
     
-    User u = (User) externalContext.getSessionMap().get("user");
+    if(!(profileBB.getEmail().equals(email))){
+            User nUser = new User (u.getId(),profileBB.getEmail(),u.getPassword(),u.getGroups().get(0));
+            flightModel.getUserList().update(nUser);
+            flightSession.setUser(nUser);
+        }
+     return "/private/user/userpage?faces-redirect=true";
+    }
+    
+    public String editPassword(){
+    
+    User u = (User) flightSession.getUser();
+            
     String currPassword = u.getPassword();
     
         if(profileBB.getOldPassword().isEmpty() || profileBB.getNewPassword().isEmpty() || profileBB.getConfNewPassword().isEmpty()){
@@ -61,8 +78,8 @@ public class EditProfileCtrl implements Serializable{
               
             User nUser = new User(u.getId(),u.getEmail(),profileBB.getNewPassword(),u.getGroups().get(0));
             flightModel.getUserList().update(nUser);
-            
+            flightSession.setUser(nUser);
         }
-    return "userpage?faces-redirect=true";
+    return "/private/user/userpage?faces-redirect=true";
     }
 }
