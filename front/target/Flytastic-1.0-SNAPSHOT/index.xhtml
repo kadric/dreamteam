@@ -54,37 +54,51 @@
 				</div>	
 			</div>
                 
-                <div class="contbox">
-                    <h:form id="form">
-                         <p:growl id="msgs" showDetail="true" />
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>From</th>
-                                    <th>To</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h:selectOneMenu class="form-control"  value="#{listAirportsBB.fromId}">
+               
+                   
+                        
+                             <br/><br/>
+                            <div class="panel panel-default contbox" >
+                                 <h:form id="form">
+                                      <p:growl id="msgs" showDetail="true" />
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        From
+                                    </div>
+                                    <div class="col-md-2">
+                                        To
+                                    </div>
+                                    <div class="col-md-3">
+                                        Departure date
+                                    </div>
+                                    
+                                    
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                         <h:selectOneMenu class="form-control"  value="#{listAirportsBB.fromId}">
                                             <p:ajax update="lineselection"/>
                                             <f:selectItem itemLabel="- Select from -" noSelectionOption="true" />
                                             <f:selectItems value="#{listAirportsBB.allAirport}" var="airport" 
                                                            itemLabel="#{airport.name}" itemValue="#{airport.id}" />
                                         </h:selectOneMenu>
-                                    </td>
-                                    <td>
-                                        <h:selectOneMenu id="lineselection" class="form-control" value="#{listAirportsBB.lineId}">
+                                        
+                                    </div>
+                                    <div class="col-md-2">
+                                        
+                                          <h:selectOneMenu id="lineselection" class="form-control" value="#{listAirportsBB.lineId}">
                                             <f:selectItem itemLabel="- Select to -" noSelectionOption="true" />
                                             <f:selectItems value="#{listAirportsBB.lines}" var="line" 
                                                            itemLabel="#{line.toAirport.name}" itemValue="#{line.id}" />
                                         </h:selectOneMenu>
-                                    </td>
-                                    <td>
+                                  
+                                    </div>
+                                    <div class="col-md-3">
                                         
-                                         <h:panelGrid columns="2" cellpadding="5">
-                                                <p:outputLabel for="date" value="Departure:" />
+                                         <h:panelGrid columns="2" >
+                                                <p:outputLabel for="date" />
                                                 <p:calendar id="date" value="#{listAirportsBB.date}" pattern="dd/MM/yyyy" mindate="24/10/2014" showOn="button" />
                                                                  </h:panelGrid>
                         
@@ -96,18 +110,23 @@
                                                    </h:outputText>
                                             </p:panelGrid>
                                     </p:dialog>
-                                    </td>
-                                    <td>
-                                        <h:commandButton value="Search" action="#{listAirportsCtrl.search}" class="btn btn-primary"/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                       
-                    </h:form>
+                                        </div>
+                                    
+                                                                                              
+                                <div id="searchButton" class="col-md-2 pull-left" >
+                                            <h:commandButton value="Search" action="#{listAirportsCtrl.search}" class="btn btn-primary pull-right"/>
+                                        </div>
+                                    
+                                  </div>
+                                    
+                           
+                                <br/>
+                                
+                               </h:form> 
+                                </div>
+                    
                     <h1><h:outputText value="#{listAirportsBB.error}" /></h1>
-                </div>
+             
                 
                 <div class="jumbotron" id="inf">
                     <h1>Fly with dzenkyAIR.</h1>	
