@@ -6,6 +6,8 @@ import edu.cth.dzenkyair.backend.core.Flight;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Groups;
 import edu.cth.dzenkyair.backend.core.Line;
+import edu.cth.dzenkyair.backend.core.Order;
+import edu.cth.dzenkyair.backend.core.Passenger;
 import edu.cth.dzenkyair.backend.core.Status;
 import edu.cth.dzenkyair.backend.core.User;
 import java.io.UnsupportedEncodingException;
@@ -72,6 +74,45 @@ public class DefaultData {
         arrival.set(2015, 1, 1, 16, 45);
         Flight flsagbg = new Flight(sagbg, departure, arrival, 10, 100, Status.OK);
         flightModel.getFlightList().create(flsagbg);
+        departure.set(2015, 2, 2, 14, 0);
+        arrival.set(2015, 2, 2, 16, 45);
+        flsagbg = new Flight(sagbg, departure, arrival, 10, 100, Status.OK);
+        flightModel.getFlightList().create(flsagbg);
+        
+        Line gbgsa = new Line(goteborg, sarajevo);
+        flightModel.getLineList().create(gbgsa);
+        Flight flgbgsa = new Flight(gbgsa, departure, arrival, 10, 100, Status.OK);
+        flightModel.getFlightList().create(flgbgsa);
+        
+        Airport istanbul = new Airport("Istanbul");
+        Airport london = new Airport("London");
+        flightModel.getAirportList().create(istanbul);
+        flightModel.getAirportList().create(london);
+        Line islo = new Line(istanbul, london);
+        Line lois = new Line(london, istanbul);
+        flightModel.getLineList().create(islo);
+        flightModel.getLineList().create(lois);
+        Flight flislo = new Flight(islo, departure, arrival, 20, 200, Status.OK);
+        Flight fllois = new Flight(lois, departure, arrival, 20, 200, Status.OK);
+        flightModel.getFlightList().create(flislo);
+        flightModel.getFlightList().create(fllois);
+        
+        Airport frankfurt = new Airport("Frankfurt am Main");
+        flightModel.getAirportList().create(frankfurt);
+        Line frlo = new Line(frankfurt, london);
+        flightModel.getLineList().create(frlo);
+        Flight flfrlo = new Flight(frlo, departure, arrival, 30, 300, Status.OK);
+        flightModel.getFlightList().create(flfrlo);
+        
+        departure.set(2014, 1, 1, 16, 45);
+        arrival.set(2015, 1, 1, 21, 45);
+        flfrlo = new Flight(frlo, departure, arrival, 30, 300, Status.OK);
+        flightModel.getFlightList().create(flfrlo);
+        Order o = new Order(flfrlo, u);
+        flightModel.getOrderList().create(o);
+        Passenger p = new Passenger(flfrlo, o, "Firstynamy", "Lastynamy", "Small");
+        flightModel.getPassengerList().create(p);
+        
     }
 
     private void clearTestData() {
