@@ -49,6 +49,19 @@ public class EditOrderCtrl implements Serializable {
             return null;
         }
         Order o = orderBB.getOrder();
+        
+        // MOVE PASSENGERS
+        Flight oldf = o.getOrderFlight();
+        List<Passenger> ps = flightModel.getPassengerList().getByOrder(o);
+        oldf = new Flight(oldf.getId(), oldf.getLine(), oldf.getDeparture(), 
+                oldf.getArrival(), oldf.getMaxPass()-ps.size(), 
+                oldf.getPrice(), oldf.getStatus());
+        f = new Flight(f.getId(), f.getLine(), f.getDeparture(), 
+                f.getArrival(), f.getMaxPass()+ps.size(), 
+                f.getPrice(), f.getStatus());
+        flightModel.getFlightList().update(oldf);
+        flightModel.getFlightList().update(f);
+        
         Order newo = new Order(o.getId(), f, o.getOrderUser());
         flightModel.getOrderList().update(newo);
         return "/private/user/vieworder?faces-redirect=true&id="+orderBB.getId();

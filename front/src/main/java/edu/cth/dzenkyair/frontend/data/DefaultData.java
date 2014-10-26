@@ -56,6 +56,7 @@ public class DefaultData {
         
         Long phone = (long) 387;
         Customer c = new Customer(u, "Firtynamy", "Lastyname", "Adressy", "Citky", phone);
+        flightModel.getCustomerList().create(c);
         
         Airport sarajevo = new Airport("Sarajevo");
         Airport goteborg = new Airport("Göteborg");

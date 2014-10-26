@@ -33,15 +33,11 @@ public class EditContactInfoBB implements Serializable{
     
     @Inject
     FlightSession flightSession;
-
-    public EditContactInfoBB() {
-        ;
-    }
     
     @PostConstruct
-    public void post() {
+    public void init() {
         User u = flightSession.getUser();
-        if(u != null && u.getGroups().get(0) != Groups.ADMIN) {
+        if(u.getGroups().get(0) != Groups.ADMIN) {
             Customer c = flightModel.getCustomerList().getByUser(u).get(0);
             firstName = c.getFirstName();
             lastName = c.getLastName();
@@ -51,6 +47,10 @@ public class EditContactInfoBB implements Serializable{
         }
     }
 
+    public EditContactInfoBB() {
+        ;
+    }
+    
     public String getFirstName() {
         return firstName;
     }
