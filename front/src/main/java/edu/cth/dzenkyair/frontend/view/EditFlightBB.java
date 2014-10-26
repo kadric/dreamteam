@@ -9,14 +9,19 @@ import edu.cth.dzenkyair.backend.core.Flight;
 import edu.cth.dzenkyair.backend.core.FlightModel;
 import edu.cth.dzenkyair.backend.core.Status;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.ManagedBean;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -25,6 +30,7 @@ import javax.inject.Named;
 @Named
 @ViewScoped
 public class EditFlightBB implements Serializable{
+    
     
     @Inject
     private FlightModel flightModel;
@@ -35,6 +41,7 @@ public class EditFlightBB implements Serializable{
     private String status;
     private String error;
     
+    
 
      public Flight getFlight() {
         if(id == null)
@@ -43,6 +50,18 @@ public class EditFlightBB implements Serializable{
         return f;
     }
     
+     public void onDateSelect(SelectEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+    }
+  
+    public void click() {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+         
+        requestContext.update("form:display");
+        requestContext.execute("PF('dlg').show()");
+    }
        
      public Collection<String> getAllStatus(){
      List<String> statuses = new ArrayList<String>();

@@ -13,8 +13,11 @@ edu\cth\dzenkyair\frontend\view\AdminCenterBB.class
 edu\cth\dzenkyair\frontend\view\EditFlightBB.class
 edu\cth\dzenkyair\frontend\view\EditProfileBB.class
 edu\cth\dzenkyair\frontend\view\ListAirportsBB.class
+edu\cth\dzenkyair\frontend\ctrl\EditFlightCtrl.class
 edu\cth\dzenkyair\frontend\auth\AdminFilter.class
+edu\cth\dzenkyair\frontend\ctrl\EditContactInfoCtrl.class
 edu\cth\dzenkyair\frontend\ctrl\SelectFlightCtrl.class
+edu\cth\dzenkyair\frontend\view\EditContactInfoBB.class
 edu\cth\dzenkyair\frontend\view\OrderListBB.class
 edu\cth\dzenkyair\frontend\view\ViewOrderBB.class
 edu\cth\dzenkyair\frontend\view\SelectFlightBB.class

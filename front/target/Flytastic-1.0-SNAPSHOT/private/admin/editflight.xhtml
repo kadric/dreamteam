@@ -16,27 +16,75 @@
                 </f:metadata>
             </ui:define>
             <ui:define name="tcontent">
-                <div class="contbox">
+                <div class="container">
                     <h3>Edit flight</h3>
+                    
                     <c:if test="#{not empty editFlightBB.error}">
                         <div class="alert alert-danger">
                             <span class="glyphicon glyphicon-remove"></span> <h:outputText value="#{editFlightBB.error}" />
                         </div>
                     </c:if>
+                    
+                    
                     <h:form>
-                        <h:panelGrid columns="2" class="table">
-                            <h:outputLabel value="Flight Id"/>
-                            <h:inputText value="#{editFlightBB.id}" readonly="true"/>
+                    
+                        <div class="row">
+                            <div class="col-md-1">
+                            <h:outputLabel value="Flight Id   "/>
+                            
+                            </div>
+                            <div class="col-md-3">
+                                
+                                <h:inputText value="#{editFlightBB.id}" style="width: 200px" readonly="true"/>
+                            </div>
+                            
+                        </div>
+                      
+                        <div class="row">
+                            <div class="col-md-1">
+                                <p:outputLabel for="departure" value="Departure:"  />
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <p:outputLabel for="departure"  />
+                                <p:calendar id="departure" value="#{editFlightBB.departure}" pattern="dd/MM/yyyy" showOn="button">
+                                    <p:ajax event="dateSelect" listener="#{editFlightBB.onDateSelect}" update="departure"/>
+                                </p:calendar>
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                               <h:outputText value="Departure:" />
+                                 <h:outputText value="#{editFlightBB.departure}">
+                                 <f:convertDateTime pattern="dd/MM/yyyy" />
+                               </h:outputText>
+                              </p:dialog>  
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <h:panelGrid columns="3">      
+                            
+                              <p:outputLabel for="arrival" value="Arrival:" />
+                              <p:calendar id="arrival" value="#{editFlightBB.arrival}" pattern="dd/MM/yyyy" showOn="button">
+                                   <p:ajax event="dateSelect" listener="#{editFlightBB.onDateSelect}" update="arrival"/>
+                              </p:calendar>
                               
-                             <p:outputLabel for="departure" value="Departure:" />
-                              <p:calendar id="departure" value="#{editFlightBB.departure}" pattern="dd/MM/yyyy" showOn="button" />
-                             
-                            <p:outputLabel for="arrival" value="Arrival:" />
-                              <p:calendar id="arrival" value="#{editFlightBB.arrival}" pattern="dd/MM/yyyy" showOn="button" />
-                              
+                               <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                                            <p:panelGrid id="display1" columns="2" columnClasses="label,value">
+                                                   <h:outputText value="Arrival:" />
+                                                   <h:outputText value="#{editFlightBB.arrival}">
+                                                   <f:convertDateTime pattern="dd/MM/yyyy" />
+                                                   </h:outputText>
+                                            </p:panelGrid>
+                                    </p:dialog>
+                              </h:panelGrid>
+                        
+                        <h:panelGrid columns="2">
                                <p:outputLabel for="status" value="Flight status: " />
                                              <h:selectOneMenu id="status" style="width: 170px" class="form-control"  value="#{editFlightBB.status}">
-                                                     
+                                                 <p:ajax update="status"/>     
                                             <f:selectItem itemLabel="- Select status -" noSelectionOption="true" />
                                             <f:selectItems value="#{editFlightBB.allStatus}" var="stat" 
                                                            itemLabel="#{stat}" itemValue="#{stat}" />
